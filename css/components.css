@@ -153,8 +153,23 @@
         gap: var(--space-3);
     }
 
+    /* Rotated so each label reads top-to-bottom, keeping the nav column narrow
+       instead of reserving width for the longest horizontal label. Flipped an
+       extra 180deg so the glyphs face the opposite side from the default rotation. */
+    .ruler__label {
+        writing-mode: vertical-rl;
+        transform: rotate(180deg);
+    }
+
+    /* Tick becomes a vertical mark too, matching the rotated label. */
+    .ruler__tick {
+        inline-size: 2px;
+        block-size: 1.25rem;
+    }
+
     .ruler__link[aria-current='true'] .ruler__tick {
-        inline-size: 2.5rem;
+        inline-size: 2px;
+        block-size: 2.5rem;
     }
 }
 

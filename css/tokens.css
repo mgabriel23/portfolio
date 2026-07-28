@@ -50,7 +50,7 @@
 
     /* Layout metrics. */
     --rail-width: clamp(20rem, 34vw, 30rem);
-    --ruler-width: 5.5rem;
+    --ruler-width: 4.5rem;
     --content-width: 42rem;
     --dock-height: 3.75rem;
     --gutter: clamp(1.25rem, 4vw, 3.5rem);
