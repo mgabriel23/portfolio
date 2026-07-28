@@ -1,0 +1,134 @@
+/* css/base.css
+   Reset, font loading strategy, global typography, and accessibility primitives. */
+
+/* Metric-compatible fallbacks: size-adjust keeps swapped web fonts from shifting
+   layout, which is what protects the CLS = 0 budget. */
+@font-face {
+	font-family: "Archivo Fallback";
+	src: local("Arial");
+	size-adjust: 99%;
+	ascent-override: 89%;
+	descent-override: 22%;
+}
+
+@font-face {
+	font-family: "Newsreader Fallback";
+	src: local("Georgia");
+	size-adjust: 96%;
+	ascent-override: 90%;
+	descent-override: 24%;
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+* {
+	margin: 0;
+}
+
+html {
+	/* Gentle snap: proximity settles near sections but never wrestles control away,
+     and never traps overflowing sections the way `mandatory` can. */
+	scroll-snap-type: y proximity;
+	scroll-padding-bottom: var(--dock-height);
+}
+
+/* Smooth anchor travel only for people who have not opted out of motion. */
+@media (prefers-reduced-motion: no-preference) {
+	html {
+		scroll-behavior: smooth;
+	}
+}
+
+body {
+	background-color: var(--color-bg);
+	color: var(--color-ink);
+	font-family: var(--font-body);
+	font-size: var(--text-md);
+	line-height: 1.6;
+	-webkit-font-smoothing: antialiased;
+	transition:
+		background-color var(--dur-quick) var(--ease-out),
+		color var(--dur-quick) var(--ease-out);
+}
+
+h1,
+h2,
+h3 {
+	font-family: var(--font-display);
+	font-weight: 650;
+	line-height: 1.05;
+	letter-spacing: -0.015em;
+	text-wrap: balance;
+}
+
+p {
+	max-width: 65ch;
+}
+
+img,
+svg {
+	display: block;
+	max-width: 100%;
+}
+
+a {
+	color: inherit;
+	text-decoration-color: var(--color-line);
+	text-underline-offset: 0.2em;
+	transition:
+		color var(--dur-quick) var(--ease-out),
+		text-decoration-color var(--dur-quick) var(--ease-out);
+}
+
+a:hover {
+	color: var(--color-accent);
+	text-decoration-color: currentcolor;
+}
+
+button {
+	font: inherit;
+	color: inherit;
+}
+
+/* One visible, consistent focus voice for every interactive element. */
+:focus-visible {
+	outline: 2px solid var(--color-accent);
+	outline-offset: 3px;
+	border-radius: var(--radius-sm);
+}
+
+::selection {
+	background-color: var(--color-accent);
+	color: var(--color-on-accent);
+}
+
+.skip-link {
+	position: fixed;
+	inset: var(--space-3) auto auto var(--space-3);
+	z-index: 100;
+	padding: var(--space-2) var(--space-4);
+	background-color: var(--color-accent);
+	color: var(--color-on-accent);
+	font-family: var(--font-mono);
+	font-size: var(--text-sm);
+	text-decoration: none;
+	border-radius: var(--radius-sm);
+	transform: translateY(-200%);
+}
+
+.skip-link:focus-visible {
+	transform: none;
+}
+
+.visually-hidden {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+	clip-path: inset(50%);
+	white-space: nowrap;
+}

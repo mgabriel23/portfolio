@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <title>Adrian Cruz — Full-Stack Engineer</title>
+        <meta
+            name="description"
+            content="Adrian Cruz is a full-stack engineer building resilient, accessible web systems. Selected projects, experience, and contact." />
+        <meta name="theme-color" content="#f2f3f0" media="(prefers-color-scheme: light)" />
+        <meta name="theme-color" content="#0f1513" media="(prefers-color-scheme: dark)" />
+        <link rel="canonical" href="https://example.com/" />
+
+        <!-- Open Graph / social preview (placeholder values). -->
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Adrian Cruz — Full-Stack Engineer" />
+        <meta
+            property="og:description"
+            content="Resilient, accessible web systems. Selected projects, experience, and contact." />
+
+        <!-- Resolve the theme before first paint so neither scheme ever flashes. -->
+        <script>
+            (function () {
+                try {
+                    var stored = localStorage.getItem('theme');
+                    var theme =
+                        stored === 'light' || stored === 'dark'
+                            ? stored
+                            : window.matchMedia('(prefers-color-scheme: dark)').matches
+                              ? 'dark'
+                              : 'light';
+                    document.documentElement.dataset.theme = theme;
+                } catch (error) {
+                    document.documentElement.dataset.theme = 'light';
+                }
+            })();
+        </script>
+
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62.5..125,400..800&family=Newsreader:ital,opsz,wght@0,6..72,400..600;1,6..72,400..600&family=Spline+Sans+Mono:wght@400;500&display=swap" />
+
+        <link rel="stylesheet" href="css/tokens.css" />
+        <link rel="stylesheet" href="css/base.css" />
+        <link rel="stylesheet" href="css/layout.css" />
+        <link rel="stylesheet" href="css/components.css" />
+        <link rel="stylesheet" href="css/sections.css" />
+    </head>
+
+    <body>
+        <a class="skip-link" href="#main">Skip to content</a>
+
+        <div class="frame">
+            <!-- Identity rail: sticky panel on desktop, leading block on mobile. -->
+            <header class="rail">
+                <div class="rail__group">
+                    <p class="rail__eyebrow">Portfolio · 2026</p>
+                    <h1 class="rail__name">Adrian Cruz</h1>
+                    <p class="rail__role">Full-Stack Engineer</p>
+                </div>
+
+                <div class="rail__group">
+                    <p class="rail__intro">
+                        I design and build web systems that stay fast, readable, and dependable long after launch — from
+                        data models to the last focus ring.
+                    </p>
+                </div>
+
+                <div class="rail__foot">
+                    <ul class="social" aria-label="Profiles and social links">
+                        <li>
+                            <a
+                                class="social__link"
+                                href="https://github.com/username"
+                                rel="me noopener"
+                                target="_blank">
+                                GitHub
+                            </a>
+                        </li>
+                        <li>
+                            <a
+                                class="social__link"
+                                href="https://www.linkedin.com/in/username"
+                                rel="me noopener"
+                                target="_blank">
+                                LinkedIn
+                            </a>
+                        </li>
+                        <li>
+                            <a class="social__link" href="mailto:hello@example.com">Email</a>
+                        </li>
+                    </ul>
+
+                    <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch theme">
+                        <span class="theme-toggle__icon theme-toggle__icon--moon" aria-hidden="true">
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                <path
+                                    d="M13.5 9.5A6 6 0 1 1 6.5 2.5a5 5 0 0 0 7 7Z"
+                                    stroke="currentColor"
+                                    stroke-width="1.5"
+                                    stroke-linejoin="round" />
+                            </svg>
+                        </span>
+                        <span class="theme-toggle__icon theme-toggle__icon--sun" aria-hidden="true">
+                            <svg
+                                width="16"
+                                height="16"
+                                viewBox="0 0 16 16"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="1.5"
+                                stroke-linecap="round">
+                                <circle cx="8" cy="8" r="3.25" />
+                                <path
+                                    d="M8 1v1.5M8 13.5V15M15 8h-1.5M2.5 8H1M12.95 3.05l-1.06 1.06M4.11 11.89l-1.06 1.06M12.95 12.95l-1.06-1.06M4.11 4.11 3.05 3.05" />
+                            </svg>
+                        </span>
+                    </button>
+                </div>
+            </header>
+
+            <!-- Ruler nav: vertical measuring rule on desktop, bottom dock on mobile. -->
+            <nav class="ruler" aria-label="Sections">
+                <ol class="ruler__list">
+                    <li class="ruler__item">
+                        <a class="ruler__link" href="#overview" aria-current="true">
+                            <span class="ruler__tick" aria-hidden="true"></span>
+                            Overview
+                        </a>
+                    </li>
+                    <li class="ruler__item">
+                        <a class="ruler__link" href="#projects">
+                            <span class="ruler__tick" aria-hidden="true"></span>
+                            Projects
+                        </a>
+                    </li>
+                    <li class="ruler__item">
+                        <a class="ruler__link" href="#experience">
+                            <span class="ruler__tick" aria-hidden="true"></span>
+                            Experience
+                        </a>
+                    </li>
+                    <li class="ruler__item">
+                        <a class="ruler__link" href="#contact">
+                            <span class="ruler__tick" aria-hidden="true"></span>
+                            Contact
+                        </a>
+                    </li>
+                </ol>
+            </nav>
+
+            <main id="main" class="panels">
+                <section id="overview" class="panel" aria-labelledby="overview-title">
+                    <div class="panel__inner">
+                        <h2 id="overview-title" class="visually-hidden">Overview</h2>
+                        <p class="overview__statement reveal">
+                            Building web systems that are
+                            <em>fast to use</em>
+                            and
+                            <em>calm to maintain</em>
+                            .
+                        </p>
+                        <p class="overview__lede reveal">
+                            Six years across product teams and platform work — shipping accessible interfaces backed by
+                            boring, reliable infrastructure.
+                        </p>
+                    </div>
+                </section>
+
+                <section id="projects" class="panel" aria-labelledby="projects-title">
+                    <div class="panel__inner">
+                        <div class="reveal">
+                            <p class="panel__eyebrow">Selected work</p>
+                            <h2 id="projects-title" class="panel__title">Projects</h2>
+                        </div>
+
+                        <ul class="project-list">
+                            <li class="project reveal">
+                                <div class="project__head">
+                                    <h3 class="project__title">
+                                        <a href="#">Ledgerline</a>
+                                    </h3>
+                                    <p class="project__year">2025</p>
+                                </div>
+                                <p class="project__desc">
+                                    Real-time budgeting dashboard for small co-ops: offline-first sync, conflict-free
+                                    edits, and sub-second reporting on five years of transactions.
+                                </p>
+                                <ul class="tags" aria-label="Technologies used">
+                                    <li class="tags__item">TypeScript</li>
+                                    <li class="tags__item">Web Components</li>
+                                    <li class="tags__item">IndexedDB</li>
+                                </ul>
+                            </li>
+
+                            <li class="project reveal">
+                                <div class="project__head">
+                                    <h3 class="project__title">
+                                        <a href="#">Fieldnote</a>
+                                    </h3>
+                                    <p class="project__year">2024</p>
+                                </div>
+                                <p class="project__desc">
+                                    Publishing tool for research teams that turns messy shared drafts into versioned,
+                                    citable documents with zero-config deploys.
+                                </p>
+                                <ul class="tags" aria-label="Technologies used">
+                                    <li class="tags__item">Node.js</li>
+                                    <li class="tags__item">PostgreSQL</li>
+                                    <li class="tags__item">Redis</li>
+                                </ul>
+                            </li>
+
+                            <li class="project reveal">
+                                <div class="project__head">
+                                    <h3 class="project__title">
+                                        <a href="#">Waypoint UI</a>
+                                    </h3>
+                                    <p class="project__year">2023</p>
+                                </div>
+                                <p class="project__desc">
+                                    Accessible component library adopted across three product lines — every pattern
+                                    keyboard-complete and WCAG 2.2 AA audited before release.
+                                </p>
+                                <ul class="tags" aria-label="Technologies used">
+                                    <li class="tags__item">CSS</li>
+                                    <li class="tags__item">ARIA</li>
+                                    <li class="tags__item">Design Tokens</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section id="experience" class="panel" aria-labelledby="experience-title">
+                    <div class="panel__inner">
+                        <div class="reveal">
+                            <p class="panel__eyebrow">Career</p>
+                            <h2 id="experience-title" class="panel__title">Experience</h2>
+                        </div>
+
+                        <ol class="timeline">
+                            <li class="timeline__entry reveal">
+                                <p class="timeline__range">2023 — Present</p>
+                                <div class="timeline__body">
+                                    <h3 class="timeline__role">
+                                        Senior Engineer ·
+                                        <span class="timeline__org">Northbeam Labs</span>
+                                    </h3>
+                                    <p class="timeline__note">
+                                        Lead the web platform: performance budgets, accessibility reviews, and the
+                                        design-system pipeline used by four teams.
+                                    </p>
+                                </div>
+                            </li>
+
+                            <li class="timeline__entry reveal">
+                                <p class="timeline__range">2021 — 2023</p>
+                                <div class="timeline__body">
+                                    <h3 class="timeline__role">
+                                        Full-Stack Developer ·
+                                        <span class="timeline__org">Harbor & Co.</span>
+                                    </h3>
+                                    <p class="timeline__note">
+                                        Built customer-facing checkout and billing flows; cut p95 page load from 4.2s to
+                                        1.1s across three markets.
+                                    </p>
+                                </div>
+                            </li>
+
+                            <li class="timeline__entry reveal">
+                                <p class="timeline__range">2020 — 2021</p>
+                                <div class="timeline__body">
+                                    <h3 class="timeline__role">
+                                        Frontend Developer ·
+                                        <span class="timeline__org">Studio Meridian</span>
+                                    </h3>
+                                    <p class="timeline__note">
+                                        Delivered editorial sites for cultural institutions with a shared static-site
+                                        toolchain and CMS integrations.
+                                    </p>
+                                </div>
+                            </li>
+                        </ol>
+                    </div>
+                </section>
+
+                <section id="contact" class="panel" aria-labelledby="contact-title">
+                    <div class="panel__inner">
+                        <div class="reveal">
+                            <p class="panel__eyebrow">Get in touch</p>
+                            <h2 id="contact-title" class="panel__title">Contact</h2>
+                        </div>
+                        <p class="contact__note reveal">
+                            Open to senior product-engineering roles and selective freelance work. The fastest way to
+                            reach me:
+                        </p>
+                        <p class="reveal">
+                            <a class="contact__link" href="mailto:hello@example.com">hello@example.com</a>
+                        </p>
+                    </div>
+                </section>
+            </main>
+        </div>
+
+        <script type="module" src="js/main.js"></script>
+    </body>
+</html>

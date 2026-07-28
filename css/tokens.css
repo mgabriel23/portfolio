@@ -1,0 +1,69 @@
+/* css/tokens.css
+   Design tokens — the single source of truth for color, type, space, and motion.
+   Components must consume these variables; never hard-code raw values downstream,
+   so both themes stay in sync from one place. */
+
+:root {
+  color-scheme: light;
+
+  /* Palette — "Patina": cool bone ground, green-black ink, one verdigris accent.
+     A single accent keeps the design disciplined; spend it only on state + signature. */
+  --color-bg: #f2f3f0;
+  --color-surface: #fafbf8;
+  --color-ink: #1a211e;
+  --color-ink-soft: #57625c;
+  --color-line: rgba(26, 33, 30, 0.16);
+  --color-accent: #2e6e5e;
+  --color-on-accent: #f2f3f0;
+
+  /* Type roles — display carries personality, body carries reading, mono carries data. */
+  --font-display: "Archivo", "Archivo Fallback", system-ui, sans-serif;
+  --font-body: "Newsreader", "Newsreader Fallback", georgia, serif;
+  --font-mono: "Spline Sans Mono", ui-monospace, "SF Mono", menlo, monospace;
+
+  /* Fluid type scale — clamp() so headings track viewport without media queries. */
+  --text-xs: 0.6875rem;
+  --text-sm: 0.9375rem;
+  --text-md: 1.125rem;
+  --text-lg: clamp(1.35rem, 1.1rem + 1vw, 1.75rem);
+  --text-xl: clamp(1.9rem, 1.35rem + 2.2vw, 3rem);
+  --text-2xl: clamp(2.5rem, 1.5rem + 3.8vw, 4.75rem);
+
+  /* Spacing — 4px base scale. */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4rem;
+  --space-9: 6rem;
+
+  --radius-sm: 6px;
+  --radius-md: 12px;
+
+  /* Motion — one easing voice; durations gated by prefers-reduced-motion in motion rules. */
+  --ease-out: cubic-bezier(0.22, 0.61, 0.28, 1);
+  --dur-quick: 180ms;
+  --dur-slow: 560ms;
+
+  /* Layout metrics. */
+  --rail-width: clamp(20rem, 34vw, 30rem);
+  --ruler-width: 5.5rem;
+  --content-width: 42rem;
+  --dock-height: 3.75rem;
+  --gutter: clamp(1.25rem, 4vw, 3.5rem);
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+
+  --color-bg: #0f1513;
+  --color-surface: #161d1a;
+  --color-ink: #e8ece8;
+  --color-ink-soft: #9aa69f;
+  --color-line: rgba(232, 236, 232, 0.16);
+  --color-accent: #7cc6ae;
+  --color-on-accent: #0f1513;
+}
