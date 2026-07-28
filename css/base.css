@@ -30,9 +30,6 @@
 }
 
 html {
-    /* Gentle snap: proximity settles near sections but never wrestles control away,
-     and never traps overflowing sections the way `mandatory` can. */
-    scroll-snap-type: y proximity;
     scroll-padding-bottom: var(--dock-height);
 }
 

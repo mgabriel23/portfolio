@@ -17,7 +17,6 @@
     gap: var(--space-5);
     min-height: 100svh;
     padding: var(--space-7) var(--gutter) calc(var(--dock-height) + var(--space-6));
-    scroll-snap-align: start;
 }
 
 /* ------------------------------------------------------------------ main column */
@@ -28,13 +27,12 @@
 
 .panel {
     /* Each section owns one viewport: svh units track mobile browser chrome without
-     resize jumpiness, protecting both the snap feel and the CLS budget. */
+     resize jumpiness, protecting the CLS budget. */
     min-height: 100svh;
     display: grid;
     align-content: center;
     justify-content: center;
     padding: var(--space-8) var(--gutter) calc(var(--dock-height) + var(--space-8));
-    scroll-snap-align: start;
 }
 
 .panel__inner {
@@ -89,13 +87,14 @@
         overflow-y: auto;
         justify-content: space-between;
         padding: var(--space-8) var(--space-6) var(--space-8) var(--gutter);
-        scroll-snap-align: none;
     }
 
     .ruler {
         position: sticky;
-        top: 0;
+        /* inset must come before top: the shorthand resets all four sides, so it
+           has to land first or it clobbers the top offset that makes sticky stick. */
         inset: auto;
+        top: 0;
         z-index: auto;
         height: 100svh;
         padding-bottom: 0;
@@ -126,6 +125,5 @@
     .rail,
     .panel {
         min-height: 0;
-        scroll-snap-align: none;
     }
 }
