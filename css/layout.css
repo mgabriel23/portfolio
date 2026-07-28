@@ -4,133 +4,128 @@
    base rules are the single-column layout; the split screen is layered on at 60em. */
 
 .frame {
-	display: grid;
-	grid-template-columns: 100%;
+    display: grid;
+    grid-template-columns: 100%;
 }
 
 /* ---------------------------------------------------------------- identity rail */
 
 .rail {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	gap: var(--space-5);
-	min-height: 100svh;
-	padding: var(--space-7) var(--gutter)
-		calc(var(--dock-height) + var(--space-6));
-	scroll-snap-align: start;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: var(--space-5);
+    min-height: 100svh;
+    padding: var(--space-7) var(--gutter) calc(var(--dock-height) + var(--space-6));
+    scroll-snap-align: start;
 }
 
 /* ------------------------------------------------------------------ main column */
 
 .panels {
-	display: block;
+    display: block;
 }
 
 .panel {
-	/* Each section owns one viewport: svh units track mobile browser chrome without
+    /* Each section owns one viewport: svh units track mobile browser chrome without
      resize jumpiness, protecting both the snap feel and the CLS budget. */
-	min-height: 100svh;
-	display: grid;
-	align-content: center;
-	justify-content: center;
-	padding: var(--space-8) var(--gutter)
-		calc(var(--dock-height) + var(--space-8));
-	scroll-snap-align: start;
+    min-height: 100svh;
+    display: grid;
+    align-content: center;
+    justify-content: center;
+    padding: var(--space-8) var(--gutter) calc(var(--dock-height) + var(--space-8));
+    scroll-snap-align: start;
 }
 
 .panel__inner {
-	width: min(var(--content-width), 100%);
-	display: grid;
-	gap: var(--space-6);
+    width: min(var(--content-width), 100%);
+    display: grid;
+    gap: var(--space-6);
 }
 
 /* -------------------------------------------------------------------- ruler nav */
 
 /* Mobile: the ruler becomes a fixed thumb-reach dock along the bottom edge. */
 .ruler {
-	position: fixed;
-	inset: auto 0 0 0;
-	z-index: 50;
-	height: calc(var(--dock-height) + env(safe-area-inset-bottom, 0px));
-	padding-bottom: env(safe-area-inset-bottom, 0px);
-	background-color: color-mix(in srgb, var(--color-bg) 86%, transparent);
-	-webkit-backdrop-filter: blur(12px);
-	backdrop-filter: blur(12px);
-	border-top: 1px solid var(--color-line);
+    position: fixed;
+    inset: auto 0 0 0;
+    z-index: 50;
+    height: calc(var(--dock-height) + env(safe-area-inset-bottom, 0px));
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+    background-color: color-mix(in srgb, var(--color-bg) 86%, transparent);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    border-top: 1px solid var(--color-line);
 }
 
 .ruler__list {
-	list-style: none;
-	margin: 0;
-	padding: 0;
-	height: var(--dock-height);
-	display: flex;
-	align-items: stretch;
-	justify-content: space-evenly;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    height: var(--dock-height);
+    display: flex;
+    align-items: stretch;
+    justify-content: space-evenly;
 }
 
 .ruler__item {
-	display: flex;
-	flex: 1;
+    display: flex;
+    flex: 1;
 }
 
 /* ---------------------------------------------------------- split screen ≥ 60em */
 
 @media (min-width: 60em) {
-	.frame {
-		grid-template-columns: var(--rail-width) var(--ruler-width) minmax(
-				0,
-				1fr
-			);
-	}
+    .frame {
+        grid-template-columns: var(--rail-width) var(--ruler-width) minmax(0, 1fr);
+    }
 
-	.rail {
-		/* The rail never scrolls with the page: it is the fixed identity panel. */
-		position: sticky;
-		top: 0;
-		height: 100svh;
-		min-height: 0;
-		overflow-y: auto;
-		justify-content: space-between;
-		padding: var(--space-8) var(--space-6) var(--space-8) var(--gutter);
-		scroll-snap-align: none;
-	}
+    .rail {
+        /* The rail never scrolls with the page: it is the fixed identity panel. */
+        position: sticky;
+        top: 0;
+        height: 100svh;
+        min-height: 0;
+        overflow-y: auto;
+        justify-content: space-between;
+        padding: var(--space-8) var(--space-6) var(--space-8) var(--gutter);
+        scroll-snap-align: none;
+    }
 
-	.ruler {
-		position: sticky;
-		top: 0;
-		inset: auto;
-		z-index: auto;
-		height: 100svh;
-		padding-bottom: 0;
-		background: none;
-		-webkit-backdrop-filter: none;
-		backdrop-filter: none;
-		border-top: 0;
-		display: grid;
-		align-content: center;
-		justify-content: center;
-	}
+    .ruler {
+        position: sticky;
+        top: 0;
+        inset: auto;
+        z-index: auto;
+        height: 100svh;
+        padding-bottom: 0;
+        background: none;
+        -webkit-backdrop-filter: none;
+        backdrop-filter: none;
+        border-top: 0;
+        display: grid;
+        align-content: center;
+        justify-content: center;
+    }
 
-	.ruler__list {
-		height: auto;
-		flex-direction: column;
-		align-items: flex-start;
-		gap: var(--space-6);
-	}
+    .ruler__list {
+        height: auto;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--space-6);
+    }
 
-	.panel {
-		padding: var(--space-8) var(--gutter);
-	}
+    .panel {
+        padding: var(--space-8) var(--gutter);
+    }
 }
 
 /* Very short landscape viewports (e.g. phones rotated): centering full-height
    sections would crop content, so let them size naturally instead. */
 @media (max-height: 30em) {
-	.rail,
-	.panel {
-		min-height: 0;
-		scroll-snap-align: none;
-	}
+    .rail,
+    .panel {
+        min-height: 0;
+        scroll-snap-align: none;
+    }
 }

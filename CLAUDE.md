@@ -42,9 +42,8 @@ There is no `package.json`, build tool, linter, or test runner in this repo.
 5. `sections.css` — per-section styles only (overview, projects, experience, contact); shared
    behavior (snapping, centering, spacing) intentionally stays out of this file.
 
-Note: `tokens.css` and `sections.css` are indented with 2 spaces while `base.css`,
-`layout.css`, and `components.css` use tabs — an existing inconsistency, not a convention
-to replicate deliberately.
+All CSS and JS is formatted per `.prettierrc` (4-space soft tabs, single quotes) — run
+`npx prettier --write css/*.css js/*.js` after edits.
 
 ### JS (`js/`, loaded as `<script type="module" src="js/main.js">`, no bundler)
 

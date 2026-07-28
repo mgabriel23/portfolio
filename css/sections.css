@@ -3,168 +3,169 @@
    (snap, centering, spacing) lives in layout.css. */
 
 .panel__eyebrow {
-  font-family: var(--font-mono);
-  font-size: var(--text-xs);
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--color-accent);
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-accent);
 }
 
 .panel__title {
-  font-size: var(--text-lg);
-  font-stretch: 110%;
-  text-transform: uppercase;
-  letter-spacing: 0.02em;
+    font-size: var(--text-lg);
+    font-stretch: 110%;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
 }
 
 /* --------------------------------------------------------------------- overview */
 
 .overview__statement {
-  font-size: var(--text-2xl);
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-stretch: 108%;
-  line-height: 1.04;
-  letter-spacing: -0.02em;
-  text-wrap: balance;
+    font-size: var(--text-2xl);
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-stretch: 108%;
+    line-height: 1.04;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
 }
 
 .overview__statement em {
-  font-style: normal;
-  color: var(--color-accent);
+    font-style: normal;
+    color: var(--color-accent);
 }
 
 .overview__lede {
-  font-size: var(--text-lg);
-  font-style: italic;
-  color: var(--color-ink-soft);
-  max-width: 42ch;
+    font-size: var(--text-lg);
+    font-style: italic;
+    color: var(--color-ink-soft);
+    max-width: 42ch;
 }
 
 /* --------------------------------------------------------------------- projects */
 
 .project-list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: grid;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
 }
 
 .project {
-  display: grid;
-  gap: var(--space-3);
-  padding-block: var(--space-6);
+    display: grid;
+    gap: var(--space-3);
+    padding-block: var(--space-6);
 }
 
 .project + .project {
-  border-top: 1px solid var(--color-line);
+    border-top: 1px solid var(--color-line);
 }
 
 .project__head {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: var(--space-4);
-  flex-wrap: wrap;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--space-4);
+    flex-wrap: wrap;
 }
 
 .project__title {
-  font-size: var(--text-lg);
+    font-size: var(--text-lg);
 }
 
 .project__title a {
-  text-decoration: none;
+    text-decoration: none;
 }
 
 .project__title a:hover,
 .project__title a:focus-visible {
-  color: var(--color-accent);
+    color: var(--color-accent);
 }
 
 /* The year is data, not decoration — set in the data voice (mono). */
 .project__year {
-  font-family: var(--font-mono);
-  font-size: var(--text-sm);
-  color: var(--color-ink-soft);
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+    color: var(--color-ink-soft);
 }
 
 .project__desc {
-  color: var(--color-ink-soft);
+    color: var(--color-ink-soft);
 }
 
 /* ------------------------------------------------------------------- experience */
 
 .timeline {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: grid;
-  gap: var(--space-6);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: var(--space-6);
 }
 
 .timeline__entry {
-  display: grid;
-  gap: var(--space-2);
+    display: grid;
+    gap: var(--space-2);
 }
 
 .timeline__range {
-  font-family: var(--font-mono);
-  font-size: var(--text-sm);
-  color: var(--color-ink-soft);
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+    color: var(--color-ink-soft);
 }
 
 .timeline__role {
-  font-size: var(--text-md);
-  font-weight: 650;
+    font-size: var(--text-md);
+    font-weight: 650;
 }
 
 .timeline__org {
-  color: var(--color-accent);
-  font-weight: inherit;
+    color: var(--color-accent);
+    font-weight: inherit;
 }
 
 .timeline__note {
-  color: var(--color-ink-soft);
+    color: var(--color-ink-soft);
 }
 
 @media (min-width: 40em) {
-  .timeline__entry {
-    grid-template-columns: 11rem minmax(0, 1fr);
-    column-gap: var(--space-5);
-  }
+    .timeline__entry {
+        grid-template-columns: 11rem minmax(0, 1fr);
+        column-gap: var(--space-5);
+    }
 
-  .timeline__range {
-    padding-top: 0.2em; /* Optically aligns mono caps with the serif role line. */
-  }
+    .timeline__range {
+        padding-top: 0.2em; /* Optically aligns mono caps with the serif role line. */
+    }
 
-  .timeline__body {
-    display: grid;
-    gap: var(--space-2);
-  }
+    .timeline__body {
+        display: grid;
+        gap: var(--space-2);
+    }
 }
 
 /* ---------------------------------------------------------------------- contact */
 
 .contact__link {
-  display: inline-block;
-  font-family: var(--font-display);
-  font-size: var(--text-xl);
-  font-weight: 700;
-  font-stretch: 110%;
-  letter-spacing: -0.01em;
-  text-decoration: none;
-  border-bottom: 2px solid var(--color-line);
-  transition: border-color var(--dur-quick) var(--ease-out),
-    color var(--dur-quick) var(--ease-out);
-  overflow-wrap: anywhere;
+    display: inline-block;
+    font-family: var(--font-display);
+    font-size: var(--text-xl);
+    font-weight: 700;
+    font-stretch: 110%;
+    letter-spacing: -0.01em;
+    text-decoration: none;
+    border-bottom: 2px solid var(--color-line);
+    transition:
+        border-color var(--dur-quick) var(--ease-out),
+        color var(--dur-quick) var(--ease-out);
+    overflow-wrap: anywhere;
 }
 
 .contact__link:hover,
 .contact__link:focus-visible {
-  color: var(--color-accent);
-  border-color: var(--color-accent);
+    color: var(--color-accent);
+    border-color: var(--color-accent);
 }
 
 .contact__note {
-  color: var(--color-ink-soft);
+    color: var(--color-ink-soft);
 }

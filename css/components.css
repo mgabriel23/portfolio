@@ -5,178 +5,178 @@
 /* ---------------------------------------------------------------- rail identity */
 
 .rail__eyebrow {
-	font-family: var(--font-mono);
-	font-size: var(--text-xs);
-	letter-spacing: 0.14em;
-	text-transform: uppercase;
-	color: var(--color-ink-soft);
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-ink-soft);
 }
 
 .rail__name {
-	font-size: var(--text-xl);
-	font-weight: 750;
-	font-stretch: 115%;
-	text-transform: uppercase;
-	letter-spacing: 0.01em;
+    font-size: var(--text-xl);
+    font-weight: 750;
+    font-stretch: 115%;
+    text-transform: uppercase;
+    letter-spacing: 0.01em;
 }
 
 .rail__role {
-	font-family: var(--font-mono);
-	font-size: var(--text-sm);
-	color: var(--color-accent);
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+    color: var(--color-accent);
 }
 
 .rail__intro {
-	color: var(--color-ink-soft);
-	font-size: var(--text-md);
+    color: var(--color-ink-soft);
+    font-size: var(--text-md);
 }
 
 .rail__group {
-	display: grid;
-	gap: var(--space-3);
+    display: grid;
+    gap: var(--space-3);
 }
 
 .rail__foot {
-	display: flex;
-	flex-wrap: wrap;
-	align-items: center;
-	justify-content: space-between;
-	gap: var(--space-4);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-4);
 }
 
 .social {
-	list-style: none;
-	margin: 0;
-	padding: 0;
-	display: flex;
-	flex-wrap: wrap;
-	gap: var(--space-2) var(--space-4);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2) var(--space-4);
 }
 
 .social__link {
-	font-family: var(--font-mono);
-	font-size: var(--text-xs);
-	letter-spacing: 0.1em;
-	text-transform: uppercase;
-	text-decoration: none;
-	color: var(--color-ink-soft);
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--color-ink-soft);
 }
 
 .social__link:hover,
 .social__link:focus-visible {
-	color: var(--color-accent);
+    color: var(--color-accent);
 }
 
 /* ----------------------------------------------------------------- theme toggle */
 
 .theme-toggle {
-	display: inline-grid;
-	place-items: center;
-	inline-size: 2.5rem;
-	block-size: 2.5rem;
-	border: 1px solid var(--color-line);
-	border-radius: 50%;
-	background-color: transparent;
-	cursor: pointer;
-	transition:
-		border-color var(--dur-quick) var(--ease-out),
-		color var(--dur-quick) var(--ease-out);
+    display: inline-grid;
+    place-items: center;
+    inline-size: 2.5rem;
+    block-size: 2.5rem;
+    border: 1px solid var(--color-line);
+    border-radius: 50%;
+    background-color: transparent;
+    cursor: pointer;
+    transition:
+        border-color var(--dur-quick) var(--ease-out),
+        color var(--dur-quick) var(--ease-out);
 }
 
 .theme-toggle:hover {
-	border-color: var(--color-accent);
-	color: var(--color-accent);
+    border-color: var(--color-accent);
+    color: var(--color-accent);
 }
 
 /* Only the icon matching the active theme is rendered; both spans exist so the
    toggle needs no JS-driven markup swaps. */
 .theme-toggle__icon {
-	display: none;
-	line-height: 0;
+    display: none;
+    line-height: 0;
 }
 
-[data-theme="light"] .theme-toggle__icon--sun,
-[data-theme="dark"] .theme-toggle__icon--moon {
-	display: block;
+[data-theme='light'] .theme-toggle__icon--sun,
+[data-theme='dark'] .theme-toggle__icon--moon {
+    display: block;
 }
 
 /* -------------------------------------------------------- ruler tick navigation */
 
 .ruler__link {
-	display: flex;
-	align-items: center;
-	gap: var(--space-3);
-	width: 100%;
-	min-height: 44px; /* WCAG 2.2 target size on touch layouts. */
-	justify-content: center;
-	text-decoration: none;
-	font-family: var(--font-mono);
-	font-size: var(--text-xs);
-	letter-spacing: 0.12em;
-	text-transform: uppercase;
-	color: var(--color-ink-soft);
-	flex-direction: column;
-	gap: var(--space-1);
-	padding: var(--space-1) var(--space-2);
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    width: 100%;
+    min-height: 44px; /* WCAG 2.2 target size on touch layouts. */
+    justify-content: center;
+    text-decoration: none;
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-ink-soft);
+    flex-direction: column;
+    gap: var(--space-1);
+    padding: var(--space-1) var(--space-2);
 }
 
 /* The tick: a measuring-rule mark that lengthens when its section is in view. */
 .ruler__tick {
-	display: block;
-	background-color: currentcolor;
-	inline-size: 1.25rem;
-	block-size: 2px;
-	transition:
-		inline-size var(--dur-quick) var(--ease-out),
-		block-size var(--dur-quick) var(--ease-out),
-		background-color var(--dur-quick) var(--ease-out);
+    display: block;
+    background-color: currentcolor;
+    inline-size: 1.25rem;
+    block-size: 2px;
+    transition:
+        inline-size var(--dur-quick) var(--ease-out),
+        block-size var(--dur-quick) var(--ease-out),
+        background-color var(--dur-quick) var(--ease-out);
 }
 
 .ruler__link:hover {
-	color: var(--color-ink);
+    color: var(--color-ink);
 }
 
-.ruler__link[aria-current="true"] {
-	color: var(--color-accent);
+.ruler__link[aria-current='true'] {
+    color: var(--color-accent);
 }
 
-.ruler__link[aria-current="true"] .ruler__tick {
-	inline-size: 2rem;
+.ruler__link[aria-current='true'] .ruler__tick {
+    inline-size: 2rem;
 }
 
 @media (min-width: 60em) {
-	.ruler__link {
-		flex-direction: row;
-		justify-content: flex-start;
-		min-height: 0;
-		padding: var(--space-1) 0;
-		gap: var(--space-3);
-	}
+    .ruler__link {
+        flex-direction: row;
+        justify-content: flex-start;
+        min-height: 0;
+        padding: var(--space-1) 0;
+        gap: var(--space-3);
+    }
 
-	.ruler__link[aria-current="true"] .ruler__tick {
-		inline-size: 2.5rem;
-	}
+    .ruler__link[aria-current='true'] .ruler__tick {
+        inline-size: 2.5rem;
+    }
 }
 
 /* ------------------------------------------------------------------------- tags */
 
 .tags {
-	list-style: none;
-	margin: 0;
-	padding: 0;
-	display: flex;
-	flex-wrap: wrap;
-	gap: var(--space-2);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
 }
 
 .tags__item {
-	font-family: var(--font-mono);
-	font-size: var(--text-xs);
-	letter-spacing: 0.08em;
-	padding: var(--space-1) var(--space-3);
-	border: 1px solid var(--color-line);
-	border-radius: 999px;
-	color: var(--color-ink-soft);
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    letter-spacing: 0.08em;
+    padding: var(--space-1) var(--space-3);
+    border: 1px solid var(--color-line);
+    border-radius: 999px;
+    color: var(--color-ink-soft);
 }
 
 /* ------------------------------------------------------------- reveal on scroll */
@@ -186,14 +186,14 @@
    elements start hidden and animate in — no-JS and reduced-motion visitors
    always get instant, static content. Transform/opacity only, so CLS stays 0. */
 .motion-ok .reveal {
-	opacity: 0;
-	transform: translateY(14px);
-	transition:
-		opacity var(--dur-slow) var(--ease-out),
-		transform var(--dur-slow) var(--ease-out);
+    opacity: 0;
+    transform: translateY(14px);
+    transition:
+        opacity var(--dur-slow) var(--ease-out),
+        transform var(--dur-slow) var(--ease-out);
 }
 
 .motion-ok .reveal.is-inview {
-	opacity: 1;
-	transform: none;
+    opacity: 1;
+    transform: none;
 }
