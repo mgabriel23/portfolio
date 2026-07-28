@@ -30,8 +30,13 @@
      resize jumpiness, protecting the CLS budget. */
     min-height: 100svh;
     display: grid;
+    /* A definite single-column track, so panel__inner's width: min(..., 100%) resolves
+       the same way in every section instead of depending on that section's own content
+       (an auto-sized track's percentage basis can otherwise vary section to section,
+       which is what was throwing projects/contact out of alignment with the rest). */
+    grid-template-columns: minmax(0, 1fr);
     align-content: center;
-    justify-content: center;
+    justify-items: center;
     padding: var(--space-8) var(--gutter) calc(var(--dock-height) + var(--space-8));
 }
 
