@@ -139,6 +139,7 @@
 }
 
 .timeline__org {
+    display: block;
     color: var(--color-accent);
     font-weight: inherit;
 }

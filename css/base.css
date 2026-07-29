@@ -40,6 +40,33 @@ html {
     }
 }
 
+/* Theme switch: the incoming theme grows from the toggle button (position set
+   by theme.js as --theme-reveal-*) until it covers the viewport, instead of
+   every element crossfading its own colors at once. Only the incoming snapshot
+   animates — the outgoing one sits still underneath and is revealed through,
+   so the circle reads as one theme "eating" into the other. Inert (no-op) in
+   browsers without View Transitions support, and skipped entirely by theme.js
+   under prefers-reduced-motion, so this rule never has to gate itself. */
+::view-transition-old(root),
+::view-transition-new(root) {
+    animation: none;
+    mix-blend-mode: normal;
+}
+
+::view-transition-new(root) {
+    clip-path: circle(0% at var(--theme-reveal-x, 50%) var(--theme-reveal-y, 50%));
+    /* Linear, not --ease-out: the circle's covered area grows with the square of
+       its radius, so an ease-out curve (tuned for quick 180ms hover states
+       elsewhere) front-loads nearly all of the coverage into the first frames. */
+    animation: theme-reveal 700ms linear forwards;
+}
+
+@keyframes theme-reveal {
+    to {
+        clip-path: circle(var(--theme-reveal-radius, 150%) at var(--theme-reveal-x, 50%) var(--theme-reveal-y, 50%));
+    }
+}
+
 body {
     background-color: var(--color-bg);
     color: var(--color-ink);

@@ -40,17 +40,49 @@ function updateToggleLabel(toggle) {
     toggle.setAttribute('aria-label', `Switch to ${next} theme`);
 }
 
+/**
+ * Positions the circular reveal at the toggle button and sizes it to reach
+ * the viewport's farthest corner, so the incoming theme fully covers the
+ * screen by the time the animation ends.
+ */
+function setRevealOrigin(toggle) {
+    const rect = toggle.getBoundingClientRect();
+    const x = rect.left + rect.width / 2;
+    const y = rect.top + rect.height / 2;
+    const radius = Math.hypot(Math.max(x, window.innerWidth - x), Math.max(y, window.innerHeight - y));
+
+    const root = document.documentElement.style;
+    root.setProperty('--theme-reveal-x', `${x}px`);
+    root.setProperty('--theme-reveal-y', `${y}px`);
+    root.setProperty('--theme-reveal-radius', `${radius}px`);
+}
+
 export function initTheme() {
     const toggle = document.querySelector('[data-theme-toggle]');
     if (!toggle) return;
 
     updateToggleLabel(toggle);
 
+    const allowsMotion = window.matchMedia('(prefers-reduced-motion: no-preference)').matches;
+
     toggle.addEventListener('click', () => {
         const next = currentTheme() === 'dark' ? 'light' : 'dark';
-        applyTheme(next);
-        storeTheme(next);
-        updateToggleLabel(toggle);
+
+        const applyAndPersist = () => {
+            applyTheme(next);
+            storeTheme(next);
+            updateToggleLabel(toggle);
+        };
+
+        // Circular reveal only when the browser supports it and the visitor
+        // hasn't opted out of motion; otherwise the theme still switches, just
+        // as an instant swap (progressive enhancement, not a requirement).
+        if (allowsMotion && document.startViewTransition) {
+            setRevealOrigin(toggle);
+            document.startViewTransition(applyAndPersist);
+        } else {
+            applyAndPersist();
+        }
     });
 
     // Follow live OS changes only while the visitor has no explicit preference,
