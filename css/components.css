@@ -228,28 +228,13 @@
     }
 }
 
-/* Below this width, five text labels no longer fit the bottom dock on one line —
-   swap to icons so every link stays visible without wrapping or clipping, down
-   to 320px. The label stays in the DOM (visually-hidden, not display:none) so
-   the link's accessible name is unaffected. */
-@media (max-width: 27em) {
-    .ruler__label {
-        position: absolute;
-        width: 1px;
-        height: 1px;
-        overflow: hidden;
-        clip-path: inset(50%);
-        white-space: nowrap;
-    }
-
-    .ruler__icon {
-        display: block;
-    }
-}
-
-/* Short desktop viewports: five rotated vertical labels plus gaps can outgrow
-   the sticky rail's own height, so swap to icons there too instead of overflowing. */
-@media (min-width: 60em) and (max-height: 40em) {
+/* Icon-only mode: below 27em wide, five text labels no longer fit the bottom
+   dock on one line (down to 320px); short desktop viewports (max-height 40em)
+   can't fit five rotated vertical labels plus gaps in the sticky rail's own
+   height either. Same fix both times, so one comma-separated (OR'd) query.
+   The label stays in the DOM (visually-hidden, not display:none) so the
+   link's accessible name is unaffected. */
+@media (max-width: 27em), (min-width: 60em) and (max-height: 40em) {
     .ruler__label {
         position: absolute;
         width: 1px;
