@@ -92,6 +92,26 @@
     color: var(--color-ink-soft);
 }
 
+/* ----------------------------------------------------------------------- skills */
+
+.skills__list {
+    display: grid;
+    gap: var(--space-6);
+}
+
+.skills__group {
+    display: grid;
+    gap: var(--space-3);
+}
+
+.skills__group-title {
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-ink-soft);
+}
+
 /* ------------------------------------------------------------------- experience */
 
 .timeline {
