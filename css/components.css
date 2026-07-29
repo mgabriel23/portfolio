@@ -154,6 +154,13 @@
         background-color var(--dur-quick) var(--ease-out);
 }
 
+/* Hidden by default; swapped in for .ruler__label when space runs out (see the
+   narrow-width and short-height overrides below). */
+.ruler__icon {
+    display: none;
+    line-height: 0;
+}
+
 .ruler__link:hover {
     color: var(--color-ink);
 }
@@ -192,6 +199,42 @@
     .ruler__link[aria-current='true'] .ruler__tick {
         inline-size: 2px;
         block-size: 2.5rem;
+    }
+}
+
+/* Below this width, five text labels no longer fit the bottom dock on one line —
+   swap to icons so every link stays visible without wrapping or clipping, down
+   to 320px. The label stays in the DOM (visually-hidden, not display:none) so
+   the link's accessible name is unaffected. */
+@media (max-width: 27em) {
+    .ruler__label {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        clip-path: inset(50%);
+        white-space: nowrap;
+    }
+
+    .ruler__icon {
+        display: block;
+    }
+}
+
+/* Short desktop viewports: five rotated vertical labels plus gaps can outgrow
+   the sticky rail's own height, so swap to icons there too instead of overflowing. */
+@media (min-width: 60em) and (max-height: 40em) {
+    .ruler__label {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        clip-path: inset(50%);
+        white-space: nowrap;
+    }
+
+    .ruler__icon {
+        display: block;
     }
 }
 
