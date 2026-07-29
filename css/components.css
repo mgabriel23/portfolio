@@ -31,24 +31,50 @@
     font-size: var(--text-md);
 }
 
+.rail__cta-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+}
+
 .rail__cta {
-    justify-self: start;
     padding: var(--space-2) var(--space-4);
-    border: 1px solid var(--color-line);
+    border: 1px solid transparent;
     border-radius: var(--radius-sm);
     font-family: var(--font-mono);
     font-size: var(--text-xs);
     letter-spacing: 0.12em;
     text-transform: uppercase;
     text-decoration: none;
-    color: var(--color-ink);
     transition:
+        background-color var(--dur-quick) var(--ease-out),
         border-color var(--dur-quick) var(--ease-out),
         color var(--dur-quick) var(--ease-out);
 }
 
-.rail__cta:hover,
-.rail__cta:focus-visible {
+/* Primary: solid accent fill so the one action meant to be unmissable reads as
+   the deliberate high-contrast moment on the page, not just another text link. */
+.rail__cta--primary {
+    border-color: var(--color-accent);
+    background-color: var(--color-accent);
+    color: var(--color-on-accent);
+}
+
+.rail__cta--primary:hover,
+.rail__cta--primary:focus-visible {
+    background-color: transparent;
+    color: var(--color-accent);
+}
+
+/* Secondary: outlined and quieter, still clearly a button but deferring to primary. */
+.rail__cta--secondary {
+    border-color: var(--color-line);
+    background-color: transparent;
+    color: var(--color-ink);
+}
+
+.rail__cta--secondary:hover,
+.rail__cta--secondary:focus-visible {
     border-color: var(--color-accent);
     color: var(--color-accent);
 }
