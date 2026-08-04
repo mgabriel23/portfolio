@@ -62,83 +62,165 @@
         <div class="frame">
             <!-- Identity rail: sticky panel on desktop, leading block on mobile. -->
             <header class="rail">
-                <div class="rail__group">
-                    <p class="rail__eyebrow">ItsmeBryle · 2026</p>
-                    <h1 class="rail__name">Mark Bryan Gabriel</h1>
-                    <p class="rail__role">Full Stack Web Developer</p>
-                </div>
+                <!-- display:contents in CSS, so these stay direct flex children of
+                     .rail — the wrapper only exists so JS can hide the whole group
+                     with one `hidden` toggle when the project gallery takes over. -->
+                <div class="rail__identity" data-rail-identity>
+                    <div class="rail__group">
+                        <p class="rail__eyebrow">ItsmeBryle · 2026</p>
+                        <h1 class="rail__name">Mark Bryan Gabriel</h1>
+                        <p class="rail__role">Full Stack Web Developer</p>
+                    </div>
 
-                <div class="rail__group">
-                    <p class="rail__intro">
-                        Motivated Web Developer dedicated to delivering clean, efficient, and user-focused solutions
-                        while continuously learning and evolving.
-                    </p>
-                </div>
+                    <div class="rail__group">
+                        <p class="rail__intro">
+                            Motivated Web Developer dedicated to delivering clean, efficient, and user-focused solutions
+                            while continuously learning and evolving.
+                        </p>
+                    </div>
 
-                <div class="rail__group">
-                    <div class="rail__cta-group">
-                        <a class="rail__cta rail__cta--primary" href="#contact">Contact Me</a>
-                        <a
-                            class="rail__cta rail__cta--secondary"
-                            href="assets/resume.pdf"
-                            target="_blank"
-                            rel="noopener">
-                            View My Resume
-                        </a>
+                    <div class="rail__group">
+                        <div class="rail__cta-group">
+                            <a class="rail__cta rail__cta--primary" href="#contact">Contact Me</a>
+                            <a
+                                class="rail__cta rail__cta--secondary"
+                                href="assets/resume.pdf"
+                                target="_blank"
+                                rel="noopener">
+                                View My Resume
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="rail__foot">
+                        <ul class="social" aria-label="Profiles and social links">
+                            <li>
+                                <a
+                                    class="social__link"
+                                    href="https://github.com/username"
+                                    rel="me noopener"
+                                    target="_blank">
+                                    GitHub
+                                </a>
+                            </li>
+                            <li>
+                                <a
+                                    class="social__link"
+                                    href="https://www.linkedin.com/in/username"
+                                    rel="me noopener"
+                                    target="_blank">
+                                    LinkedIn
+                                </a>
+                            </li>
+                            <li>
+                                <a class="social__link" href="mailto:mrkbryngbrl@gmail.com">Email</a>
+                            </li>
+                        </ul>
+
+                        <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch theme">
+                            <span class="theme-toggle__icon theme-toggle__icon--moon" aria-hidden="true">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                    <path
+                                        d="M13.5 9.5A6 6 0 1 1 6.5 2.5a5 5 0 0 0 7 7Z"
+                                        stroke="currentColor"
+                                        stroke-width="1.5"
+                                        stroke-linejoin="round" />
+                                </svg>
+                            </span>
+                            <span class="theme-toggle__icon theme-toggle__icon--sun" aria-hidden="true">
+                                <svg
+                                    width="16"
+                                    height="16"
+                                    viewBox="0 0 16 16"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="1.5"
+                                    stroke-linecap="round">
+                                    <circle cx="8" cy="8" r="3.25" />
+                                    <path
+                                        d="M8 1v1.5M8 13.5V15M15 8h-1.5M2.5 8H1M12.95 3.05l-1.06 1.06M4.11 11.89l-1.06 1.06M12.95 12.95l-1.06-1.06M4.11 4.11 3.05 3.05" />
+                                </svg>
+                            </span>
+                        </button>
                     </div>
                 </div>
 
-                <div class="rail__foot">
-                    <ul class="social" aria-label="Profiles and social links">
-                        <li>
-                            <a
-                                class="social__link"
-                                href="https://github.com/username"
-                                rel="me noopener"
-                                target="_blank">
-                                GitHub
-                            </a>
+                <!-- Project gallery panel: shown inline in the rail (.show()) at
+                     desktop widths, or as a true modal (.showModal()) below the
+                     60em breakpoint — see js/projectGallery.js. Same element,
+                     same content, just a different presentation per viewport. -->
+                <dialog class="rail__gallery" data-rail-gallery aria-labelledby="rail-gallery-title">
+                    <button type="button" class="rail__gallery-back" data-gallery-close>
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                            <path
+                                d="M8.5 2.5 3 7l5.5 4.5"
+                                stroke="currentColor"
+                                stroke-width="1.5"
+                                stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                        Back
+                    </button>
+
+                    <p class="panel__eyebrow" data-gallery-eyebrow>Web App</p>
+                    <h2 id="rail-gallery-title" class="rail__gallery-title" data-gallery-title>resum.io</h2>
+
+                    <ul class="rail__gallery-shots" aria-label="Screenshots">
+                        <li class="rail__gallery-shot" data-index="01">
+                            <svg width="32" height="20" viewBox="0 0 32 20" fill="none">
+                                <rect
+                                    x="0.75"
+                                    y="0.75"
+                                    width="30.5"
+                                    height="18.5"
+                                    rx="2"
+                                    stroke="currentColor"
+                                    stroke-width="1.5" />
+                                <line x1="0.75" y1="5" x2="31.25" y2="5" stroke="currentColor" stroke-width="1.5" />
+                                <circle cx="3.25" cy="2.875" r="0.6" fill="currentColor" />
+                                <circle cx="5.25" cy="2.875" r="0.6" fill="currentColor" />
+                                <circle cx="7.25" cy="2.875" r="0.6" fill="currentColor" />
+                            </svg>
                         </li>
-                        <li>
-                            <a
-                                class="social__link"
-                                href="https://www.linkedin.com/in/username"
-                                rel="me noopener"
-                                target="_blank">
-                                LinkedIn
-                            </a>
+                        <li class="rail__gallery-shot" data-index="02">
+                            <svg width="32" height="20" viewBox="0 0 32 20" fill="none">
+                                <rect
+                                    x="0.75"
+                                    y="0.75"
+                                    width="30.5"
+                                    height="18.5"
+                                    rx="2"
+                                    stroke="currentColor"
+                                    stroke-width="1.5" />
+                                <line x1="0.75" y1="5" x2="31.25" y2="5" stroke="currentColor" stroke-width="1.5" />
+                                <circle cx="3.25" cy="2.875" r="0.6" fill="currentColor" />
+                                <circle cx="5.25" cy="2.875" r="0.6" fill="currentColor" />
+                                <circle cx="7.25" cy="2.875" r="0.6" fill="currentColor" />
+                            </svg>
                         </li>
-                        <li>
-                            <a class="social__link" href="mailto:mrkbryngbrl@gmail.com">Email</a>
+                        <li class="rail__gallery-shot" data-index="03">
+                            <svg width="32" height="20" viewBox="0 0 32 20" fill="none">
+                                <rect
+                                    x="0.75"
+                                    y="0.75"
+                                    width="30.5"
+                                    height="18.5"
+                                    rx="2"
+                                    stroke="currentColor"
+                                    stroke-width="1.5" />
+                                <line x1="0.75" y1="5" x2="31.25" y2="5" stroke="currentColor" stroke-width="1.5" />
+                                <circle cx="3.25" cy="2.875" r="0.6" fill="currentColor" />
+                                <circle cx="5.25" cy="2.875" r="0.6" fill="currentColor" />
+                                <circle cx="7.25" cy="2.875" r="0.6" fill="currentColor" />
+                            </svg>
                         </li>
                     </ul>
 
-                    <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch theme">
-                        <span class="theme-toggle__icon theme-toggle__icon--moon" aria-hidden="true">
-                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                                <path
-                                    d="M13.5 9.5A6 6 0 1 1 6.5 2.5a5 5 0 0 0 7 7Z"
-                                    stroke="currentColor"
-                                    stroke-width="1.5"
-                                    stroke-linejoin="round" />
-                            </svg>
-                        </span>
-                        <span class="theme-toggle__icon theme-toggle__icon--sun" aria-hidden="true">
-                            <svg
-                                width="16"
-                                height="16"
-                                viewBox="0 0 16 16"
-                                fill="none"
-                                stroke="currentColor"
-                                stroke-width="1.5"
-                                stroke-linecap="round">
-                                <circle cx="8" cy="8" r="3.25" />
-                                <path
-                                    d="M8 1v1.5M8 13.5V15M15 8h-1.5M2.5 8H1M12.95 3.05l-1.06 1.06M4.11 11.89l-1.06 1.06M12.95 12.95l-1.06-1.06M4.11 4.11 3.05 3.05" />
-                            </svg>
-                        </span>
-                    </button>
-                </div>
+                    <a class="rail__cta rail__cta--primary" data-gallery-visit target="_blank" rel="noopener">
+                        Visit
+                        <span data-gallery-visit-label>project</span>
+                    </a>
+                </dialog>
             </header>
 
             <!-- Ruler nav: vertical measuring rule on desktop, bottom dock on mobile. -->
@@ -270,7 +352,12 @@
                             <li class="project reveal">
                                 <div class="project__head">
                                     <h3 class="project__title">
-                                        <a href="https://mgabriel23.github.io/resum.io/" target="_blank" rel="noopener">
+                                        <a
+                                            href="https://mgabriel23.github.io/resum.io/"
+                                            target="_blank"
+                                            rel="noopener"
+                                            data-open-gallery
+                                            data-project-eyebrow="Web App">
                                             resum.io
                                         </a>
                                     </h3>
@@ -293,7 +380,9 @@
                                         <a
                                             href="https://chromewebstore.google.com/detail/jfdgdlnpgfhdlkgficlfbfkcmpfnilke?utm_source=item-share-cb"
                                             target="_blank"
-                                            rel="noopener">
+                                            rel="noopener"
+                                            data-open-gallery
+                                            data-project-eyebrow="Browser Extension">
                                             sense
                                         </a>
                                     </h3>

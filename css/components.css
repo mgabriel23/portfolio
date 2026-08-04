@@ -115,6 +115,167 @@
     color: var(--color-accent);
 }
 
+/* The wrapper only exists so JS can hide/show the whole identity block in one
+   step; display:contents keeps its children as direct flex items of .rail so
+   the rail's own gap/justify-content rules are unaffected either way. */
+.rail__identity {
+    display: contents;
+}
+
+.rail__identity[hidden] {
+    display: none;
+}
+
+/* --------------------------------------------------------------- project gallery */
+
+/* Reset the <dialog> defaults so it can adopt either presentation below —
+   shown inline in the rail on desktop, or as a true modal on small screens.
+   The UA stylesheet's position:absolute + height:fit-content would otherwise
+   pull it out of the rail's flex flow and size it to its content regardless
+   of that flow, which is exactly what defeats the shrink-to-fit below. */
+.rail__gallery {
+    position: static;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    width: auto;
+    height: auto;
+    max-width: none;
+    max-height: none;
+    background: none;
+    color: inherit;
+}
+
+/* Desktop: opened with dialog.show(), so it renders in normal flow (not the
+   top layer) and simply takes the identity block's place in the rail. Entry
+   and content-swap motion is handled by a View Transition in
+   js/projectGallery.js instead of a CSS keyframe, so the same crossfade
+   covers both the first open and switching between projects while it's
+   already open — a keyframe here would only ever cover the former. */
+.rail__gallery[open]:not(:modal) {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    flex: 1 1 auto;
+    min-height: 0;
+    width: 100%;
+}
+
+/* Small screens: opened with dialog.showModal(), the standard centered overlay. */
+.rail__gallery:modal {
+    position: fixed;
+    inset: 0;
+    margin: auto;
+    width: min(26rem, 100% - var(--gutter));
+    max-height: min(32rem, 100% - var(--gutter));
+    padding: var(--space-6);
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius-md);
+    background-color: var(--color-surface);
+    color: var(--color-ink);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+}
+
+.rail__gallery::backdrop {
+    background-color: color-mix(in srgb, var(--color-ink) 55%, transparent);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .rail__gallery:modal {
+        transition:
+            display var(--dur-slow) allow-discrete,
+            overlay var(--dur-slow) allow-discrete,
+            opacity var(--dur-slow) var(--ease-out),
+            transform var(--dur-slow) var(--ease-out);
+        opacity: 0;
+        transform: scale(0.98);
+    }
+
+    .rail__gallery:modal[open] {
+        opacity: 1;
+        transform: none;
+    }
+
+    /* Starting state for the entry transition — browsers without @starting-style
+       support just skip straight to the opened state above, which is fine. */
+    @starting-style {
+        .rail__gallery:modal[open] {
+            opacity: 0;
+            transform: scale(0.98);
+        }
+    }
+}
+
+.rail__gallery-back {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    align-self: flex-start;
+    flex-shrink: 0;
+    padding: 0;
+    border: 0;
+    background: none;
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-ink-soft);
+    cursor: pointer;
+}
+
+.rail__gallery-back:hover,
+.rail__gallery-back:focus-visible {
+    color: var(--color-accent);
+}
+
+.rail__gallery-title {
+    flex-shrink: 0;
+    font-size: var(--text-lg);
+}
+
+.rail__gallery-shots {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow-y: auto;
+}
+
+/* Placeholder screenshot tiles: swap the icon for a real <img> once assets
+   exist. The index label reuses the same data-voice treatment as
+   .project__year rather than adding a new visual idiom for it. */
+.rail__gallery-shot {
+    position: relative;
+    aspect-ratio: 16 / 10;
+    flex-shrink: 0;
+    display: grid;
+    place-items: center;
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius-sm);
+    background-color: var(--color-bg);
+    color: var(--color-ink-soft);
+}
+
+.rail__gallery-shot svg {
+    opacity: 0.6;
+}
+
+.rail__gallery-shot::after {
+    content: attr(data-index);
+    position: absolute;
+    left: var(--space-2);
+    bottom: var(--space-2);
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    color: var(--color-ink-soft);
+}
+
 /* ----------------------------------------------------------------- theme toggle */
 
 .theme-toggle {
