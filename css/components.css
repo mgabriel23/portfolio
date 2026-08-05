@@ -208,6 +208,29 @@
     }
 }
 
+/* Wraps everything that actually differs between projects (the back button
+   doesn't), so switching projects while the gallery is already open can
+   cross-fade just this content — see js/projectGallery.js. The View
+   Transition covering open/close doesn't produce a visible effect for this
+   in-place case, since nothing about the panel's own visibility changes. */
+.rail__gallery-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    flex: 1 1 auto;
+    min-height: 0;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .rail__gallery-content {
+        transition: opacity var(--dur-quick) var(--ease-out);
+    }
+
+    .rail__gallery-content.is-swapping {
+        opacity: 0;
+    }
+}
+
 .rail__gallery-back {
     display: inline-flex;
     align-items: center;
