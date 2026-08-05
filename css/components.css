@@ -299,6 +299,28 @@
     color: var(--color-ink-soft);
 }
 
+/* Full-width primary action: label left, arrow flush right — a clearer
+   outbound-link affordance and a bigger, easier target than an inline-sized
+   button. Scoped to the gallery's own Visit link so the identity block's
+   Contact/Resume buttons (which share .rail__cta) are unaffected. */
+.rail__gallery-visit {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-3);
+}
+
+.rail__gallery-visit svg {
+    flex-shrink: 0;
+    transition: transform var(--dur-quick) var(--ease-out);
+}
+
+.rail__gallery-visit:hover svg,
+.rail__gallery-visit:focus-visible svg {
+    transform: translateX(2px);
+}
+
 /* ----------------------------------------------------------------- theme toggle */
 
 .theme-toggle {
