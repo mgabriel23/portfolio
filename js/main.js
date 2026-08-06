@@ -6,12 +6,14 @@ import { initTheme } from './theme.js';
 import { initScrollSpy } from './scrollSpy.js';
 import { initMotion } from './motion.js';
 import { initProjectGallery } from './projectGallery.js';
+import { initImageLightbox } from './imageLightbox.js';
 
 function init() {
     initTheme();
     initScrollSpy();
     initMotion();
     initProjectGallery();
+    initImageLightbox();
 }
 
 // Modules are deferred by type="module", but guard anyway in case the script

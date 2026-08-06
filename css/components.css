@@ -310,6 +310,7 @@
     display: block;
     width: 100%;
     height: auto;
+    cursor: zoom-in;
 }
 
 /* Full-width primary action: label left, arrow flush right — a clearer
@@ -332,6 +333,152 @@
 .rail__gallery-visit:hover svg,
 .rail__gallery-visit:focus-visible svg {
     transform: translateX(2px);
+}
+
+/* --------------------------------------------------------------- image lightbox */
+
+/* Reset the <dialog> defaults, same reasoning as .rail__gallery: the UA
+   stylesheet's position:absolute + fit-content sizing would otherwise fight
+   the positioning below. z-index only matters for the non-modal (hover)
+   state, which renders in normal stacking order — showModal() always uses
+   the browser's top layer regardless. Padding (rather than the image
+   sitting flush against a hairline edge) is what makes the frame itself
+   read as a deliberate, polished moment instead of an afterthought. */
+.image-lightbox {
+    position: fixed;
+    z-index: 60;
+    margin: 0;
+    width: fit-content;
+    height: fit-content;
+    padding: var(--space-4);
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius-md);
+    background-color: var(--color-surface);
+    box-shadow: 0 20px 60px -15px color-mix(in srgb, var(--color-ink) 45%, transparent);
+}
+
+.image-lightbox[open] {
+    display: grid;
+    place-items: center;
+}
+
+.image-lightbox img {
+    display: block;
+    border-radius: var(--radius-sm);
+    object-fit: contain;
+}
+
+/* Desktop hover peek: opened with dialog.show(), dismissed by the pointer
+   simply leaving the thumbnail — so no close button either. No backdrop
+   either, kept deliberately light — a hover interaction shouldn't dim or
+   freeze the rest of the page the way a deliberate tap/click should.
+   Centered within the open space beside the rail (not the whole viewport —
+   that would overlap the thumbnail list itself, and hovering onto the
+   preview would then register as the pointer leaving the list and
+   immediately close it). Given a fixed size rather than shrinking to fit
+   each image (the shots are a mix of wide and portrait screenshots), so the
+   frame stays put and the same size regardless of which one is showing —
+   the image just centers within it via place-items:center above. */
+.image-lightbox:not(:modal) .image-lightbox__close {
+    display: none;
+}
+
+@media (min-width: 60em) {
+    .image-lightbox:not(:modal) {
+        top: 50%;
+        left: calc(var(--rail-width) + var(--ruler-width) + (100vw - var(--rail-width) - var(--ruler-width)) / 2);
+        transform: translate(-50%, -50%);
+        width: min(calc(100vw - var(--rail-width) - var(--ruler-width) - 2 * var(--gutter)), 64rem);
+        height: min(90vh, 46rem);
+    }
+
+    .image-lightbox:not(:modal) img {
+        max-width: 100%;
+        max-height: 100%;
+    }
+}
+
+/* Small screens: opened with dialog.showModal() on tap, the standard
+   centered overlay — needs its own explicit close control since there's no
+   hover-out to dismiss it. */
+.image-lightbox:modal {
+    inset: 0;
+    margin: auto;
+    max-width: min(92vw, 56rem);
+    max-height: 88vh;
+}
+
+.image-lightbox:modal img {
+    max-width: min(92vw, 56rem);
+    max-height: 88vh;
+}
+
+.image-lightbox::backdrop {
+    background-color: var(--color-ink);
+}
+
+.image-lightbox__close {
+    position: absolute;
+    top: var(--space-3);
+    right: var(--space-3);
+    display: inline-grid;
+    place-items: center;
+    inline-size: 2rem;
+    block-size: 2rem;
+    border: 0;
+    border-radius: 50%;
+    background-color: color-mix(in srgb, var(--color-surface) 75%, transparent);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+    color: var(--color-ink-soft);
+    cursor: pointer;
+    transition: color var(--dur-quick) var(--ease-out);
+}
+
+.image-lightbox__close:hover,
+.image-lightbox__close:focus-visible {
+    color: var(--color-accent);
+}
+
+/* Just a fade for the hover peek — .image-lightbox:not(:modal) already owns
+   `transform` for vertical centering (see above), so animating scale here
+   too would fight over the same property. The modal case has no competing
+   transform, so it gets the fuller scale-in treatment. */
+@media (prefers-reduced-motion: no-preference) {
+    .image-lightbox {
+        transition:
+            display var(--dur-quick) allow-discrete,
+            overlay var(--dur-quick) allow-discrete,
+            opacity var(--dur-quick) var(--ease-out);
+        opacity: 0;
+    }
+
+    .image-lightbox[open] {
+        opacity: 1;
+    }
+
+    .image-lightbox:modal {
+        transition:
+            display var(--dur-quick) allow-discrete,
+            overlay var(--dur-quick) allow-discrete,
+            opacity var(--dur-quick) var(--ease-out),
+            transform var(--dur-quick) var(--ease-out);
+        transform: scale(0.96);
+    }
+
+    .image-lightbox:modal[open] {
+        transform: none;
+    }
+
+    @starting-style {
+        .image-lightbox[open] {
+            opacity: 0;
+        }
+
+        .image-lightbox:modal[open] {
+            transform: scale(0.96);
+        }
+    }
 }
 
 /* ----------------------------------------------------------------- theme toggle */
