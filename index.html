@@ -166,56 +166,7 @@
                         <p class="panel__eyebrow" data-gallery-eyebrow>Web App</p>
                         <h2 id="rail-gallery-title" class="rail__gallery-title" data-gallery-title>resum.io</h2>
 
-                        <ul class="rail__gallery-shots" aria-label="Screenshots">
-                            <li class="rail__gallery-shot" data-index="01">
-                                <svg width="32" height="20" viewBox="0 0 32 20" fill="none">
-                                    <rect
-                                        x="0.75"
-                                        y="0.75"
-                                        width="30.5"
-                                        height="18.5"
-                                        rx="2"
-                                        stroke="currentColor"
-                                        stroke-width="1.5" />
-                                    <line x1="0.75" y1="5" x2="31.25" y2="5" stroke="currentColor" stroke-width="1.5" />
-                                    <circle cx="3.25" cy="2.875" r="0.6" fill="currentColor" />
-                                    <circle cx="5.25" cy="2.875" r="0.6" fill="currentColor" />
-                                    <circle cx="7.25" cy="2.875" r="0.6" fill="currentColor" />
-                                </svg>
-                            </li>
-                            <li class="rail__gallery-shot" data-index="02">
-                                <svg width="32" height="20" viewBox="0 0 32 20" fill="none">
-                                    <rect
-                                        x="0.75"
-                                        y="0.75"
-                                        width="30.5"
-                                        height="18.5"
-                                        rx="2"
-                                        stroke="currentColor"
-                                        stroke-width="1.5" />
-                                    <line x1="0.75" y1="5" x2="31.25" y2="5" stroke="currentColor" stroke-width="1.5" />
-                                    <circle cx="3.25" cy="2.875" r="0.6" fill="currentColor" />
-                                    <circle cx="5.25" cy="2.875" r="0.6" fill="currentColor" />
-                                    <circle cx="7.25" cy="2.875" r="0.6" fill="currentColor" />
-                                </svg>
-                            </li>
-                            <li class="rail__gallery-shot" data-index="03">
-                                <svg width="32" height="20" viewBox="0 0 32 20" fill="none">
-                                    <rect
-                                        x="0.75"
-                                        y="0.75"
-                                        width="30.5"
-                                        height="18.5"
-                                        rx="2"
-                                        stroke="currentColor"
-                                        stroke-width="1.5" />
-                                    <line x1="0.75" y1="5" x2="31.25" y2="5" stroke="currentColor" stroke-width="1.5" />
-                                    <circle cx="3.25" cy="2.875" r="0.6" fill="currentColor" />
-                                    <circle cx="5.25" cy="2.875" r="0.6" fill="currentColor" />
-                                    <circle cx="7.25" cy="2.875" r="0.6" fill="currentColor" />
-                                </svg>
-                            </li>
-                        </ul>
+                        <ul class="rail__gallery-shots" aria-label="Screenshots" data-gallery-shots-list></ul>
 
                         <a
                             class="rail__gallery-visit rail__cta rail__cta--primary"
@@ -237,6 +188,58 @@
                         </a>
                     </div>
                 </dialog>
+
+                <!-- Per-project screenshot sets for the gallery panel above —
+                     js/projectGallery.js clones the matching one into
+                     [data-gallery-shots-list] based on the trigger's
+                     data-gallery-shots. -->
+                <template id="gallery-shots-resumio">
+                    <li class="rail__gallery-shot">
+                        <img
+                            src="assets/resum.io-gallery-1.png"
+                            alt="resum.io template picker showing three resume style options"
+                            loading="lazy" />
+                    </li>
+                    <li class="rail__gallery-shot">
+                        <img
+                            src="assets/resum.io-gallery-2.png"
+                            alt="resum.io editor with the section list and a live resume preview"
+                            loading="lazy" />
+                    </li>
+                    <li class="rail__gallery-shot">
+                        <img
+                            src="assets/resum.io-gallery-4.png"
+                            alt="resum.io on a narrow screen, showing the responsive layout"
+                            loading="lazy" />
+                    </li>
+                    <li class="rail__gallery-shot">
+                        <img
+                            src="assets/resum.io-gallery-3.png"
+                            alt="A resume exported from resum.io as a PDF"
+                            loading="lazy" />
+                    </li>
+                </template>
+
+                <template id="gallery-shots-sense">
+                    <li class="rail__gallery-shot">
+                        <img
+                            src="assets/sense-gallery-1.png"
+                            alt="sense previewing a site across mobile, tablet, laptop, and desktop at once"
+                            loading="lazy" />
+                    </li>
+                    <li class="rail__gallery-shot">
+                        <img
+                            src="assets/sense-gallery-2.png"
+                            alt="sense's multi-screen preview in dark mode"
+                            loading="lazy" />
+                    </li>
+                    <li class="rail__gallery-shot">
+                        <img
+                            src="assets/sense-gallery-3.png"
+                            alt="sense's onboarding tour walking through entering a URL to preview"
+                            loading="lazy" />
+                    </li>
+                </template>
             </header>
 
             <!-- Ruler nav: vertical measuring rule on desktop, bottom dock on mobile. -->
@@ -369,11 +372,12 @@
                                 <div class="project__head">
                                     <h3 class="project__title">
                                         <a
-                                            href="https://mgabriel23.github.io/resum.io/"
+                                            href="https://resume.itsmebryle.com/"
                                             target="_blank"
                                             rel="noopener"
                                             data-open-gallery
-                                            data-project-eyebrow="Web App">
+                                            data-project-eyebrow="Web App"
+                                            data-gallery-shots="gallery-shots-resumio">
                                             resum.io
                                         </a>
                                     </h3>
@@ -398,7 +402,8 @@
                                             target="_blank"
                                             rel="noopener"
                                             data-open-gallery
-                                            data-project-eyebrow="Browser Extension">
+                                            data-project-eyebrow="Browser Extension"
+                                            data-gallery-shots="gallery-shots-sense">
                                             sense
                                         </a>
                                     </h3>

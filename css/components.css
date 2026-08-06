@@ -270,17 +270,24 @@
     overflow-y: auto;
 }
 
-/* Placeholder screenshot tiles: swap the icon for a real <img> once assets
-   exist. The index label reuses the same data-voice treatment as
-   .project__year rather than adding a new visual idiom for it. */
 .rail__gallery-shot {
     position: relative;
-    aspect-ratio: 16 / 10;
     flex-shrink: 0;
-    display: grid;
-    place-items: center;
     border: 1px solid var(--color-line);
     border-radius: var(--radius-sm);
+    overflow: hidden;
+}
+
+/* Placeholder state only (no screenshot asset yet): a fixed frame with a
+   centered icon and an index label, in the same data-voice mono treatment
+   as .project__year. Real screenshots (a tile with an <img>) skip this and
+   just keep their own natural aspect ratio — several real screenshots
+   rarely share one ratio, and forcing a crop on them risks cutting off
+   whatever it is the shot is actually meant to show. */
+.rail__gallery-shot:has(svg) {
+    aspect-ratio: 16 / 10;
+    display: grid;
+    place-items: center;
     background-color: var(--color-bg);
     color: var(--color-ink-soft);
 }
@@ -289,7 +296,7 @@
     opacity: 0.6;
 }
 
-.rail__gallery-shot::after {
+.rail__gallery-shot:has(svg)::after {
     content: attr(data-index);
     position: absolute;
     left: var(--space-2);
@@ -297,6 +304,12 @@
     font-family: var(--font-mono);
     font-size: var(--text-xs);
     color: var(--color-ink-soft);
+}
+
+.rail__gallery-shot img {
+    display: block;
+    width: 100%;
+    height: auto;
 }
 
 /* Full-width primary action: label left, arrow flush right — a clearer

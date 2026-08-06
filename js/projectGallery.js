@@ -21,6 +21,7 @@ export function initProjectGallery() {
     const contentEl = panel.querySelector('[data-gallery-content]');
     const eyebrowEl = panel.querySelector('[data-gallery-eyebrow]');
     const titleEl = panel.querySelector('[data-gallery-title]');
+    const shotsListEl = panel.querySelector('[data-gallery-shots-list]');
     const visitEl = panel.querySelector('[data-gallery-visit]');
     const visitLabelEl = panel.querySelector('[data-gallery-visit-label]');
     const backBtn = panel.querySelector('[data-gallery-close]');
@@ -41,6 +42,9 @@ export function initProjectGallery() {
         titleEl.textContent = title;
         visitEl.href = trigger.href;
         visitLabelEl.textContent = title;
+
+        const shotsTemplate = document.getElementById(trigger.dataset.galleryShots);
+        if (shotsTemplate) shotsListEl.replaceChildren(shotsTemplate.content.cloneNode(true));
     }
 
     // Desktop content changes — first open, or switching projects while
