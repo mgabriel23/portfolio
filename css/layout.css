@@ -22,7 +22,7 @@
     flex-direction: column;
     justify-content: center;
     gap: var(--space-4);
-    padding: var(--space-6) var(--gutter) var(--space-5);
+    padding: var(--space-9) var(--gutter) var(--space-8);
 }
 
 /* ------------------------------------------------------------------ main column */
@@ -45,7 +45,7 @@
     grid-template-columns: minmax(0, 1fr);
     align-content: center;
     justify-items: center;
-    padding: var(--space-6) var(--gutter) calc(var(--dock-height) + var(--space-6));
+    padding: var(--space-9) var(--gutter) calc(var(--dock-height) + var(--space-9));
 }
 
 .panel__inner {
@@ -92,19 +92,19 @@
     }
 
     .rail {
-        /* The rail never scrolls with the page: it is the fixed identity panel.
-           Padding kept tighter than the mobile block below (space-7, not
-           space-8) — on shorter laptop screens (~700px tall), the photo +
-           name + intro + CTA row + footer stacked at the roomier mobile
-           padding didn't all fit in 100svh, forcing this to scroll even
-           though nothing looked obviously overflowing. */
+        /* The rail never scrolls with the page under normal circumstances:
+           it is the fixed identity panel. overflow-y: auto is a graceful
+           fallback, not the primary layout — on unusually short browser
+           windows (under ~650px tall) the stacked photo + name + intro + CTA
+           row + footer can exceed 100svh, and it scrolls internally rather
+           than clipping content or breaking the sticky positioning. */
         position: sticky;
         top: 0;
         height: 100svh;
         min-height: 0;
         overflow-y: auto;
         justify-content: space-between;
-        padding: var(--space-7) var(--space-6) var(--space-7) var(--gutter);
+        padding: var(--space-8) var(--space-6) var(--space-8) var(--gutter);
     }
 
     .ruler {
