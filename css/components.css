@@ -92,27 +92,19 @@
     gap: var(--space-4);
 }
 
-.social {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-2) var(--space-4);
-}
-
-.social__link {
+.rail__location {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
     font-family: var(--font-mono);
     font-size: var(--text-xs);
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    text-decoration: none;
     color: var(--color-ink-soft);
 }
 
-.social__link:hover,
-.social__link:focus-visible {
-    color: var(--color-accent);
+.rail__location svg {
+    flex-shrink: 0;
 }
 
 /* The wrapper only exists so JS can hide/show the whole identity block in one
