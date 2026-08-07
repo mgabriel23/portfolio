@@ -31,6 +31,11 @@
 
 html {
     scroll-padding-bottom: var(--dock-height);
+    /* Reserves the scrollbar's width whether or not one is currently needed,
+       so toggling overflow: hidden (image lightbox open/close) never changes
+       the available content width — without this, losing and regaining the
+       scrollbar shifts everything sideways by its width on every hover. */
+    scrollbar-gutter: stable;
 }
 
 /* Smooth anchor travel only for people who have not opted out of motion. */

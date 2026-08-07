@@ -268,6 +268,61 @@
     flex: 1 1 auto;
     min-height: 0;
     overflow-y: auto;
+    /* Stops the scroll right at this list's own boundary instead of letting
+       it chain into whatever's behind — on the mobile modal, that's the page
+       itself, which would otherwise start scrolling once this list hits its
+       bottom (or top) mid-swipe. */
+    overscroll-behavior-y: contain;
+
+    /* A visibly-styled scrollbar plus fading edges make "this scrolls"
+       obvious without relying on a visitor noticing a thin OS-default bar —
+       and mobile browsers mostly ignore scrollbar styling entirely, so the
+       fade is what actually carries the hint there. The scroll-shadow
+       technique: two gradients that scroll with the content
+       (background-attachment: local) are solid --shots-bg out to where the
+       fade should start, masking the shadow layers beneath them exactly at
+       each scrolled boundary — so a given edge's shadow only shows while
+       there's still more list to scroll toward it. */
+    background-image:
+        linear-gradient(to bottom, var(--shots-bg) 30%, transparent),
+        linear-gradient(to top, var(--shots-bg) 30%, transparent),
+        linear-gradient(to bottom, color-mix(in srgb, var(--color-ink) 20%, transparent), transparent),
+        linear-gradient(to top, color-mix(in srgb, var(--color-ink) 20%, transparent), transparent);
+    background-repeat: no-repeat;
+    background-size:
+        100% var(--space-6),
+        100% var(--space-6),
+        100% var(--space-3),
+        100% var(--space-3);
+    background-position: top, bottom, top, bottom;
+    background-attachment: local, local, scroll, scroll;
+
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-ink-soft) transparent;
+}
+
+.rail__gallery-shots::-webkit-scrollbar {
+    width: 6px;
+}
+
+.rail__gallery-shots::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.rail__gallery-shots::-webkit-scrollbar-thumb {
+    background-color: var(--color-ink-soft);
+    border-radius: 999px;
+}
+
+/* The scroll-shadow gradients above need to know what they're masking
+   against — the desktop (inline) rail sits on the page background, the
+   mobile modal is its own --color-surface panel. */
+.rail__gallery[open]:not(:modal) .rail__gallery-shots {
+    --shots-bg: var(--color-bg);
+}
+
+.rail__gallery:modal .rail__gallery-shots {
+    --shots-bg: var(--color-surface);
 }
 
 .rail__gallery-shot {
