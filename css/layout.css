@@ -11,12 +11,18 @@
 /* ---------------------------------------------------------------- identity rail */
 
 .rail {
+    /* Bottom padding does *not* reserve dock clearance here: the rail flows
+       directly into .panels, which already reserves it at the top of that
+       flow via each .panel's own bottom padding. Adding it here too just
+       stacked two clearances into one dead gap between the identity block
+       and the first section. The short-viewport media query below restores
+       it for the one case where the rail's own content can be tall enough
+       to reach the fixed dock before scrolling into the panels. */
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: var(--space-5);
-    min-height: 100svh;
-    padding: var(--space-7) var(--gutter) calc(var(--dock-height) + var(--space-6));
+    gap: var(--space-4);
+    padding: var(--space-6) var(--gutter) var(--space-5);
 }
 
 /* ------------------------------------------------------------------ main column */
@@ -26,9 +32,11 @@
 }
 
 .panel {
-    /* Each section owns one viewport: svh units track mobile browser chrome without
-     resize jumpiness, protecting the CLS budget. */
-    min-height: 100svh;
+    /* No forced min-height on mobile — sections there just size to their own
+       content instead of always padding out to a full screen regardless of
+       how little (or much) is in them; the "each section owns one viewport"
+       treatment is a desktop split-screen thing, restored in the media query
+       below. */
     display: grid;
     /* A definite single-column track, so panel__inner's width: min(..., 100%) resolves
        the same way in every section instead of depending on that section's own content
@@ -37,7 +45,7 @@
     grid-template-columns: minmax(0, 1fr);
     align-content: center;
     justify-items: center;
-    padding: var(--space-8) var(--gutter) calc(var(--dock-height) + var(--space-8));
+    padding: var(--space-6) var(--gutter) calc(var(--dock-height) + var(--space-6));
 }
 
 .panel__inner {
@@ -84,14 +92,19 @@
     }
 
     .rail {
-        /* The rail never scrolls with the page: it is the fixed identity panel. */
+        /* The rail never scrolls with the page: it is the fixed identity panel.
+           Padding kept tighter than the mobile block below (space-7, not
+           space-8) — on shorter laptop screens (~700px tall), the photo +
+           name + intro + CTA row + footer stacked at the roomier mobile
+           padding didn't all fit in 100svh, forcing this to scroll even
+           though nothing looked obviously overflowing. */
         position: sticky;
         top: 0;
         height: 100svh;
         min-height: 0;
         overflow-y: auto;
         justify-content: space-between;
-        padding: var(--space-8) var(--space-6) var(--space-8) var(--gutter);
+        padding: var(--space-7) var(--space-6) var(--space-7) var(--gutter);
     }
 
     .ruler {
@@ -120,15 +133,27 @@
     }
 
     .panel {
+        /* Each section owns one viewport in the desktop split-screen layout
+           (svh tracks browser chrome without resize jumpiness, protecting
+           the CLS budget) — mobile deliberately doesn't force this; see the
+           base rule above. */
+        min-height: 100svh;
         padding: var(--space-8) var(--gutter);
     }
 }
 
 /* Very short landscape viewports (e.g. phones rotated): centering full-height
-   sections would crop content, so let them size naturally instead. */
+   sections would crop content, so let them size naturally instead. Below this
+   height the rail's own content can plausibly still be scrolling past when
+   its bottom edge reaches the fixed dock, so restore the clearance the base
+   rule above intentionally omits. */
 @media (max-height: 30em) {
     .rail,
     .panel {
         min-height: 0;
+    }
+
+    .rail {
+        padding-bottom: calc(var(--dock-height) + var(--space-5));
     }
 }

@@ -81,6 +81,23 @@
     color: var(--color-accent);
 }
 
+/* Signals there's a screenshot gallery behind the title, not just a plain
+   outbound link — dimmed via opacity (not a separate color) so it still
+   just inherits the link's own currentColor, ink at rest and accent on
+   hover, same as the text next to it. */
+.project__title-icon {
+    display: inline-block;
+    vertical-align: -1px;
+    margin-left: var(--space-2);
+    opacity: 0.55;
+    transition: opacity var(--dur-quick) var(--ease-out);
+}
+
+.project__title a:hover .project__title-icon,
+.project__title a:focus-visible .project__title-icon {
+    opacity: 1;
+}
+
 /* The year is data, not decoration — set in the data voice (mono). */
 .project__year {
     font-family: var(--font-mono);
@@ -189,4 +206,17 @@
 
 .contact__note {
     color: var(--color-ink-soft);
+}
+
+/* A quieter second channel below the big email link — same data-voice
+   treatment as .rail__location rather than competing with the email for
+   visual weight. */
+.contact__secondary {
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+    color: var(--color-ink-soft);
+}
+
+.contact__secondary a {
+    text-decoration: none;
 }

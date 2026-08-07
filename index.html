@@ -87,9 +87,17 @@
             <header class="rail">
                 <!-- display:contents in CSS, so these stay direct flex children of
                      .rail — the wrapper only exists so JS can hide the whole group
-                     with one `hidden` toggle when the project gallery takes over. -->
+                     with one `hidden` toggle when the project gallery takes over.
+                     The CTA row and footer live outside it (below) so Contact Me /
+                     View Resume stay reachable even while the gallery is open. -->
                 <div class="rail__identity" data-rail-identity>
                     <div class="rail__group">
+                        <img
+                            class="rail__photo"
+                            src="assets/photo.webp"
+                            alt="Portrait of Mark Bryan Gabriel"
+                            width="64"
+                            height="64" />
                         <p class="rail__eyebrow">ItsmeBryle · 2026</p>
                         <h1 class="rail__name">Mark Bryan Gabriel</h1>
                         <p class="rail__role">Full Stack Web Developer</p>
@@ -101,65 +109,16 @@
                             while continuously learning and evolving.
                         </p>
                     </div>
-
-                    <div class="rail__group">
-                        <div class="rail__cta-group">
-                            <a class="rail__cta rail__cta--primary" href="#contact">Contact Me</a>
-                            <a
-                                class="rail__cta rail__cta--secondary"
-                                href="assets/resume.pdf"
-                                target="_blank"
-                                rel="noopener">
-                                View My Resume
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="rail__foot">
-                        <p class="rail__location">
-                            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                                <path
-                                    d="M8 14.5s5-4.5 5-8.5a5 5 0 1 0-10 0c0 4 5 8.5 5 8.5Z"
-                                    stroke="currentColor"
-                                    stroke-width="1.5"
-                                    stroke-linejoin="round" />
-                                <circle cx="8" cy="6" r="1.75" stroke="currentColor" stroke-width="1.5" />
-                            </svg>
-                            Manila, Philippines
-                        </p>
-
-                        <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch theme">
-                            <span class="theme-toggle__icon theme-toggle__icon--moon" aria-hidden="true">
-                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                                    <path
-                                        d="M13.5 9.5A6 6 0 1 1 6.5 2.5a5 5 0 0 0 7 7Z"
-                                        stroke="currentColor"
-                                        stroke-width="1.5"
-                                        stroke-linejoin="round" />
-                                </svg>
-                            </span>
-                            <span class="theme-toggle__icon theme-toggle__icon--sun" aria-hidden="true">
-                                <svg
-                                    width="16"
-                                    height="16"
-                                    viewBox="0 0 16 16"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    stroke-width="1.5"
-                                    stroke-linecap="round">
-                                    <circle cx="8" cy="8" r="3.25" />
-                                    <path
-                                        d="M8 1v1.5M8 13.5V15M15 8h-1.5M2.5 8H1M12.95 3.05l-1.06 1.06M4.11 11.89l-1.06 1.06M12.95 12.95l-1.06-1.06M4.11 4.11 3.05 3.05" />
-                                </svg>
-                            </span>
-                        </button>
-                    </div>
                 </div>
 
                 <!-- Project gallery panel: shown inline in the rail (.show()) at
                      desktop widths, or as a true modal (.showModal()) below the
                      60em breakpoint — see js/projectGallery.js. Same element,
-                     same content, just a different presentation per viewport. -->
+                     same content, just a different presentation per viewport.
+                     Positioned right after .rail__identity (not after the CTA
+                     row below) so it visually takes the identity block's place
+                     at the top of the rail, instead of appearing below the
+                     buttons that are meant to stay put. -->
                 <dialog class="rail__gallery" data-rail-gallery aria-labelledby="rail-gallery-title">
                     <button type="button" class="rail__gallery-back" data-gallery-close>
                         <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
@@ -200,6 +159,59 @@
                     </div>
                 </dialog>
 
+                <div class="rail__group">
+                    <div class="rail__cta-group">
+                        <a class="rail__cta rail__cta--primary" href="#contact">Contact Me</a>
+                        <a
+                            class="rail__cta rail__cta--secondary"
+                            href="assets/resume.pdf"
+                            target="_blank"
+                            rel="noopener">
+                            View My Resume
+                        </a>
+                    </div>
+                </div>
+
+                <div class="rail__foot">
+                    <p class="rail__location">
+                        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                            <path
+                                d="M8 14.5s5-4.5 5-8.5a5 5 0 1 0-10 0c0 4 5 8.5 5 8.5Z"
+                                stroke="currentColor"
+                                stroke-width="1.5"
+                                stroke-linejoin="round" />
+                            <circle cx="8" cy="6" r="1.75" stroke="currentColor" stroke-width="1.5" />
+                        </svg>
+                        Manila, Philippines
+                    </p>
+
+                    <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch theme">
+                        <span class="theme-toggle__icon theme-toggle__icon--moon" aria-hidden="true">
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                <path
+                                    d="M13.5 9.5A6 6 0 1 1 6.5 2.5a5 5 0 0 0 7 7Z"
+                                    stroke="currentColor"
+                                    stroke-width="1.5"
+                                    stroke-linejoin="round" />
+                            </svg>
+                        </span>
+                        <span class="theme-toggle__icon theme-toggle__icon--sun" aria-hidden="true">
+                            <svg
+                                width="16"
+                                height="16"
+                                viewBox="0 0 16 16"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="1.5"
+                                stroke-linecap="round">
+                                <circle cx="8" cy="8" r="3.25" />
+                                <path
+                                    d="M8 1v1.5M8 13.5V15M15 8h-1.5M2.5 8H1M12.95 3.05l-1.06 1.06M4.11 11.89l-1.06 1.06M12.95 12.95l-1.06-1.06M4.11 4.11 3.05 3.05" />
+                            </svg>
+                        </span>
+                    </button>
+                </div>
+
                 <!-- Per-project screenshot sets for the gallery panel above —
                      js/projectGallery.js clones the matching one into
                      [data-gallery-shots-list] based on the trigger's
@@ -207,20 +219,26 @@
                 <template id="gallery-shots-resumio">
                     <li class="rail__gallery-shot">
                         <img
-                            src="assets/resum.io-gallery-1.png"
+                            src="assets/resum.io-gallery-1.webp"
                             alt="resum.io template picker showing three resume style options"
                             loading="lazy" />
                     </li>
                     <li class="rail__gallery-shot">
                         <img
-                            src="assets/resum.io-gallery-2.png"
+                            src="assets/resum.io-gallery-2.webp"
                             alt="resum.io editor with the section list and a live resume preview"
                             loading="lazy" />
                     </li>
                     <li class="rail__gallery-shot">
                         <img
-                            src="assets/resum.io-gallery-3.png"
+                            src="assets/resum.io-gallery-4.webp"
                             alt="resum.io on a narrow screen, showing the responsive layout"
+                            loading="lazy" />
+                    </li>
+                    <li class="rail__gallery-shot">
+                        <img
+                            src="assets/resum.io-gallery-3.webp"
+                            alt="A resume exported from resum.io as a PDF"
                             loading="lazy" />
                     </li>
                 </template>
@@ -228,19 +246,19 @@
                 <template id="gallery-shots-sense">
                     <li class="rail__gallery-shot">
                         <img
-                            src="assets/sense-gallery-1.png"
+                            src="assets/sense-gallery-1.webp"
                             alt="sense previewing a site across mobile, tablet, laptop, and desktop at once"
                             loading="lazy" />
                     </li>
                     <li class="rail__gallery-shot">
                         <img
-                            src="assets/sense-gallery-2.png"
+                            src="assets/sense-gallery-2.webp"
                             alt="sense's multi-screen preview in dark mode"
                             loading="lazy" />
                     </li>
                     <li class="rail__gallery-shot">
                         <img
-                            src="assets/sense-gallery-3.png"
+                            src="assets/sense-gallery-3.webp"
                             alt="sense's onboarding tour walking through entering a URL to preview"
                             loading="lazy" />
                     </li>
@@ -382,6 +400,28 @@
                                             data-project-eyebrow="Web App"
                                             data-gallery-shots="gallery-shots-resumio">
                                             resum.io
+                                            <svg
+                                                class="project__title-icon"
+                                                width="14"
+                                                height="14"
+                                                viewBox="0 0 16 16"
+                                                fill="none"
+                                                aria-hidden="true">
+                                                <rect
+                                                    x="1.5"
+                                                    y="3.5"
+                                                    width="9"
+                                                    height="9"
+                                                    rx="1.5"
+                                                    stroke="currentColor"
+                                                    stroke-width="1.5" />
+                                                <path
+                                                    d="M5.5 1.5h7a1.5 1.5 0 0 1 1.5 1.5v7"
+                                                    stroke="currentColor"
+                                                    stroke-width="1.5"
+                                                    stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                            </svg>
                                         </a>
                                     </h3>
                                     <p class="project__year">2026</p>
@@ -408,6 +448,28 @@
                                             data-project-eyebrow="Browser Extension"
                                             data-gallery-shots="gallery-shots-sense">
                                             sense
+                                            <svg
+                                                class="project__title-icon"
+                                                width="14"
+                                                height="14"
+                                                viewBox="0 0 16 16"
+                                                fill="none"
+                                                aria-hidden="true">
+                                                <rect
+                                                    x="1.5"
+                                                    y="3.5"
+                                                    width="9"
+                                                    height="9"
+                                                    rx="1.5"
+                                                    stroke="currentColor"
+                                                    stroke-width="1.5" />
+                                                <path
+                                                    d="M5.5 1.5h7a1.5 1.5 0 0 1 1.5 1.5v7"
+                                                    stroke="currentColor"
+                                                    stroke-width="1.5"
+                                                    stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                            </svg>
                                         </a>
                                     </h3>
                                     <p class="project__year">2026</p>
@@ -524,7 +586,7 @@
                             </li>
 
                             <li class="timeline__entry reveal">
-                                <p class="timeline__range">June 2015 — May 2019</p>
+                                <p class="timeline__range">June 2019 — April 2024</p>
                                 <div class="timeline__body">
                                     <h3 class="timeline__role">
                                         Jr. Software Programmer
@@ -554,6 +616,9 @@
                         </p>
                         <p class="reveal">
                             <a class="contact__link" href="mailto:mrkbryngbrl@gmail.com">mrkbryngbrl@gmail.com</a>
+                        </p>
+                        <p class="contact__secondary reveal">
+                            <a href="tel:+639273243042">+63 927 324 3042</a>
                         </p>
                     </div>
                 </section>
