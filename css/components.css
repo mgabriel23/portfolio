@@ -4,16 +4,47 @@
 
 /* ---------------------------------------------------------------- rail identity */
 
-/* Rounded-square (not circular) to match the site's one corner-radius
-   language everywhere else — a circular avatar would be the only circle on
-   the page besides the theme toggle. Kept small and out of the way of the
-   name/role text it sits above, not a hero-sized portrait. */
+/* Unstyled button wrapper so the small thumbnail is keyboard-reachable and
+   announced as an action (opens the same enlarge/zoom preview used for
+   project screenshots — see js/imageLightbox.js) rather than a plain,
+   inert image. The scale nudge on hover/focus is the "this zooms" cue;
+   the actual enlarge happens in the lightbox it opens. */
+.rail__photo-trigger {
+    /* .rail__group is a grid, whose items stretch to the column width by
+       default — without this the button (unlike the plain img it replaced)
+       would inflate to the full rail width instead of hugging the photo. */
+    justify-self: start;
+    display: inline-block;
+    padding: 0;
+    border: 0;
+    line-height: 0;
+    background: none;
+    cursor: zoom-in;
+    border-radius: 50%;
+    transition: transform var(--dur-quick) var(--ease-out);
+}
+
+.rail__photo-trigger:hover,
+.rail__photo-trigger:focus-visible {
+    transform: scale(1.06);
+}
+
+.rail__photo-trigger:hover .rail__photo,
+.rail__photo-trigger:focus-visible .rail__photo {
+    border-color: var(--color-accent);
+}
+
+/* Circular — the one deliberate exception to the site's corner-radius
+   language elsewhere, same treatment as the theme toggle. Kept small and
+   out of the way of the name/role text it sits above, not a hero-sized
+   portrait. */
 .rail__photo {
     width: 4rem;
     height: 4rem;
-    border-radius: var(--radius-md);
+    border-radius: 50%;
     border: 1px solid var(--color-line);
     object-fit: cover;
+    transition: border-color var(--dur-quick) var(--ease-out);
 }
 
 .rail__eyebrow {
@@ -418,6 +449,12 @@
 
 .image-lightbox[open] {
     display: grid;
+    /* The image row flexes to fill whatever space the (optional) caption
+       row below it doesn't need, so img's max-height: 100% keeps resolving
+       against a definite size instead of the auto/auto pair the two rows
+       would otherwise leave undefined. */
+    grid-template-rows: minmax(0, 1fr) auto;
+    gap: var(--space-2);
     place-items: center;
 }
 
@@ -425,6 +462,29 @@
     display: block;
     border-radius: var(--radius-sm);
     object-fit: contain;
+}
+
+/* Identifies the rail photo once it's enlarged to full size, away from the
+   name text next to its thumbnail. Name and role are separate lines (not
+   one run of text) so it never has to line-wrap mid-phrase on narrow
+   screens; JS leaves it [hidden] for screenshots, which don't set one. */
+.image-lightbox__caption {
+    margin: 0;
+    display: grid;
+    gap: 0.25em;
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    letter-spacing: 0.06em;
+    text-align: center;
+    color: var(--color-ink-soft);
+}
+
+.image-lightbox__caption[hidden] {
+    display: none;
+}
+
+.image-lightbox__caption-role {
+    color: var(--color-accent);
 }
 
 /* Desktop hover peek: opened with dialog.show(), dismissed by the pointer

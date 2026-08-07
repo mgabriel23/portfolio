@@ -92,12 +92,18 @@
                      View Resume stay reachable even while the gallery is open. -->
                 <div class="rail__identity" data-rail-identity>
                     <div class="rail__group">
-                        <img
-                            class="rail__photo"
-                            src="assets/photo.webp"
-                            alt="Portrait of Mark Bryan Gabriel"
-                            width="64"
-                            height="64" />
+                        <button
+                            type="button"
+                            class="rail__photo-trigger"
+                            data-lightbox-photo
+                            aria-label="View a larger photo of Mark Bryan Gabriel">
+                            <img
+                                class="rail__photo"
+                                src="assets/photo.webp"
+                                alt="Portrait of Mark Bryan Gabriel"
+                                width="64"
+                                height="64" />
+                        </button>
                         <p class="rail__eyebrow">ItsmeBryle · 2026</p>
                         <h1 class="rail__name">Mark Bryan Gabriel</h1>
                         <p class="rail__role">Full Stack Web Developer</p>
@@ -625,17 +631,22 @@
             </main>
         </div>
 
-        <!-- Enlarged screenshot preview: shown non-modally on hover at desktop
-             widths (dialog.show(), dismissed on mouseleave), or as a true
-             modal on tap at small widths (dialog.showModal()) — see
-             js/imageLightbox.js. -->
-        <dialog class="image-lightbox" data-image-lightbox aria-label="Enlarged screenshot">
+        <!-- Enlarged preview for project screenshots and the rail photo: shown
+             non-modally on hover at desktop widths (dialog.show(), dismissed
+             on mouseleave), or as a true modal on tap at small widths
+             (dialog.showModal()) — see js/imageLightbox.js. aria-label and
+             the caption are filled in by JS per opened image. -->
+        <dialog class="image-lightbox" data-image-lightbox aria-label="Enlarged image">
             <button type="button" class="image-lightbox__close" data-image-lightbox-close aria-label="Close">
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
                     <path d="M3 3l10 10M13 3 3 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
                 </svg>
             </button>
             <img data-image-lightbox-img src="" alt="" />
+            <p class="image-lightbox__caption" data-image-lightbox-caption hidden>
+                <span class="image-lightbox__caption-name" data-image-lightbox-caption-name></span>
+                <span class="image-lightbox__caption-role" data-image-lightbox-caption-role></span>
+            </p>
         </dialog>
 
         <script type="module" src="js/main.js"></script>
