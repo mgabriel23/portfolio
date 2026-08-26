@@ -6,13 +6,13 @@
 
 ## Features
 
-* **Responsive Layout:** Split-screen on desktop; single column with a bottom nav dock on mobile.
-* **Smart Light/Dark Theme:** Remembers your preference, avoids theme flashing on load, and features a smooth circular reveal transition.
-* **Active Scroll Nav:** Automatically tracks and highlights your current section as you scroll using accessible `aria-current` tags.
-* **Interactive Screenshot Gallery:** View project images in an inline rail on desktop or a mobile modal, with a built-in zoom lightbox.
-* **Motion-Aware Animations:** Smooth scroll-reveal effects that automatically respect `prefers-reduced-motion` settings.
-* **Built for Accessibility:** Fully WCAG AA compliant with 44px touch targets, visible focus states, high-contrast colors, and skip links.
-* **SEO Optimized:** Out-of-the-box support for Open Graph tags, JSON-LD structured data, canonical URLs, `sitemap.xml`, and `robots.txt`.
+- **Responsive** — split-screen desktop, single-column mobile with bottom nav
+- **Light/dark theme** — remembers your choice, no flash on load, smooth reveal transition
+- **Active scroll nav** — highlights your current section via `aria-current`
+- **Screenshot gallery** — inline rail on desktop, modal + zoom on mobile
+- **Reduced-motion aware** — scroll animations respect `prefers-reduced-motion`
+- **WCAG AA accessible** — 44px touch targets, focus states, skip links
+- **SEO ready** — Open Graph, JSON-LD, canonical URLs, sitemap, robots.txt
 
 ## Tech Stack
 
