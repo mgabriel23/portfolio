@@ -746,6 +746,9 @@
 }
 
 .tags__item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4em;
     font-family: var(--font-mono);
     font-size: var(--text-xs);
     letter-spacing: 0.08em;
@@ -772,4 +775,12 @@
 .motion-ok .reveal.is-inview {
     opacity: 1;
     transform: none;
+}
+
+/* for skills tech icons */
+.tags__icon {
+    width: 1em;
+    height: 1em;
+    flex-shrink: 0;
+    color: currentColor; /* follows the tag's own text color, no per-theme overrides needed */
 }

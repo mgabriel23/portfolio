@@ -80,6 +80,222 @@
     </head>
 
     <body>
+        <!-- skills tech icons -->
+        <!-- Icon sprite: single source, referenced via <use> — no extra requests, inherits currentColor -->
+        <svg aria-hidden="true" focusable="false" style="position: absolute; width: 0; height: 0; overflow: hidden">
+            <defs>
+                <symbol
+                    id="icon-html"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.75"
+                    stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <path d="M8 4 4 12 8 20" />
+                    <path d="M16 4 20 12 16 20" />
+                </symbol>
+                <symbol
+                    id="icon-css"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.75"
+                    stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <path d="M9 4v16M15 4v16M4 9h16M4 15h16" />
+                </symbol>
+                <symbol
+                    id="icon-bootstrap"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.75"
+                    stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <rect x="4" y="4" width="16" height="16" rx="2" />
+                    <path d="M12 4v16M4 12h16" />
+                </symbol>
+                <symbol
+                    id="icon-js"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.75"
+                    stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <path d="M8 4c-2 0-3 1-3 3v3c0 1.3-.8 2-2 2 1.2 0 2 .7 2 2v3c0 2 1 3 3 3" />
+                    <path d="M16 4c2 0 3 1 3 3v3c0 1.3.8 2 2 2-1.2 0-2 .7-2 2v3c0 2-1 3-3 3" />
+                </symbol>
+                <symbol
+                    id="icon-jquery"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.75"
+                    stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="9" />
+                    <path d="M12 7v10" />
+                    <path
+                        d="M9.5 9.7c0-1.4 1.2-1.9 2.5-1.9s2.5.6 2.5 1.8-1.1 1.7-2.5 1.9-2.5.9-2.5 2 1.2 1.9 2.5 1.9 2.5-.5 2.5-1.9" />
+                </symbol>
+                <symbol
+                    id="icon-typescript"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.75"
+                    stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <rect x="3" y="3" width="18" height="18" rx="4" />
+                    <path d="M7.5 8h5M10 8v8" />
+                    <path d="M14 16c0-.7.6-1 1.5-1s1.5.4 1.5 1-1 1-1.5 1.3-1.5.5-1.5 1.2 1 1.2 1.5 1.2 1.5-.3 1.5-1" />
+                </symbol>
+                <symbol
+                    id="icon-react"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linecap="round">
+                    <circle cx="12" cy="12" r="1.8" fill="currentColor" stroke="none" />
+                    <ellipse cx="12" cy="12" rx="10" ry="4" />
+                    <ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(60 12 12)" />
+                    <ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(120 12 12)" />
+                </symbol>
+                <symbol
+                    id="icon-pwa"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.75"
+                    stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <rect x="7" y="2" width="10" height="20" rx="2" />
+                    <path d="M12 19h.01" />
+                    <path d="M9 2.5h6" />
+                </symbol>
+                <symbol
+                    id="icon-php"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.75"
+                    stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <rect x="4" y="4" width="16" height="6" rx="1.5" />
+                    <rect x="4" y="14" width="16" height="6" rx="1.5" />
+                    <path d="M7.5 7h.01M7.5 17h.01" />
+                </symbol>
+                <symbol
+                    id="icon-mysql"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.75"
+                    stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <ellipse cx="12" cy="6" rx="8" ry="3" />
+                    <path d="M4 6v6c0 1.7 3.6 3 8 3s8-1.3 8-3V6" />
+                    <path d="M4 12v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6" />
+                </symbol>
+                <symbol
+                    id="icon-node"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.75"
+                    stroke-linejoin="round">
+                    <path d="M12 3 20 7.5v9L12 21 4 16.5v-9Z" />
+                </symbol>
+                <symbol
+                    id="icon-python"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.75"
+                    stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <rect x="3" y="4" width="18" height="16" rx="2" />
+                    <path d="M7 9l3 3-3 3" />
+                    <path d="M12 15h5" />
+                </symbol>
+                <symbol
+                    id="icon-git"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.75"
+                    stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <circle cx="6" cy="6" r="2" />
+                    <circle cx="6" cy="18" r="2" />
+                    <circle cx="18" cy="8" r="2" />
+                    <path d="M6 8v8" />
+                    <path d="M6 12c0 2.5 2.5 2.5 5 2.5h3.5" />
+                    <path d="M18 10v2" />
+                </symbol>
+                <symbol
+                    id="icon-aws"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.75"
+                    stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <path d="M7 18a4 4 0 0 1-1-7.9 5 5 0 0 1 9.6-1.9A4.5 4.5 0 0 1 17 18H7Z" />
+                </symbol>
+                <symbol
+                    id="icon-figma"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.75"
+                    stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <circle cx="6" cy="18" r="1.6" />
+                    <circle cx="18" cy="6" r="1.6" />
+                    <path d="M6 18 18 6" />
+                    <rect x="10.5" y="10.5" width="3" height="3" rx="0.5" />
+                </symbol>
+                <symbol
+                    id="icon-photoshop"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.75"
+                    stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <rect x="3" y="4" width="18" height="16" rx="2" />
+                    <circle cx="8.5" cy="9.5" r="1.5" />
+                    <path d="M4 17l5-5 3 3 4-5 4 5" />
+                </symbol>
+                <symbol
+                    id="icon-chatgpt"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.75"
+                    stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <path d="M4 5h16a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H9l-4 4v-4H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Z" />
+                    <path d="M12 8.3 12.9 10 14.6 10.9 12.9 11.8 12 13.5 11.1 11.8 9.4 10.9 11.1 10Z" />
+                </symbol>
+                <symbol
+                    id="icon-claude"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.75"
+                    stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <path d="M4 5h16a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H9l-4 4v-4H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Z" />
+                    <path d="M12 8v6M9.2 9.5l5.6 3M14.8 9.5l-5.6 3" />
+                </symbol>
+            </defs>
+        </svg>
+
         <a class="skip-link" href="#main">Skip to content</a>
 
         <div class="frame">
@@ -165,6 +381,7 @@
                     </div>
                 </dialog>
 
+                <!-- left side cta buttons -->
                 <div class="rail__group">
                     <div class="rail__cta-group">
                         <a class="rail__cta rail__cta--primary" href="#contact">Contact Me</a>
@@ -174,6 +391,13 @@
                             target="_blank"
                             rel="noopener">
                             View My Resume
+                        </a>
+                        <a
+                            class="rail__cta rail__cta--secondary"
+                            href="https://github.com/mgabriel23/"
+                            target="_blank"
+                            rel="noopener">
+                            View My Github Profile
                         </a>
                     </div>
                 </div>
@@ -578,48 +802,102 @@
                             <div class="skills__group reveal">
                                 <h3 class="skills__group-title">Front-end</h3>
                                 <ul class="tags" aria-label="Front-end skills">
-                                    <li class="tags__item">HTML</li>
-                                    <li class="tags__item">CSS</li>
-                                    <li class="tags__item">Bootstrap</li>
-                                    <li class="tags__item">JavaScript</li>
-                                    <li class="tags__item">jQuery</li>
-                                    <li class="tags__item">TypeScript</li>
-                                    <li class="tags__item">React</li>
-                                    <li class="tags__item">PWA</li>
+                                    <li class="tags__item">
+                                        <svg class="tags__icon" aria-hidden="true"><use href="#icon-html" /></svg>
+                                        HTML
+                                    </li>
+                                    <li class="tags__item">
+                                        <svg class="tags__icon" aria-hidden="true"><use href="#icon-css" /></svg>
+                                        CSS
+                                    </li>
+                                    <li class="tags__item">
+                                        <svg class="tags__icon" aria-hidden="true"><use href="#icon-bootstrap" /></svg>
+                                        Bootstrap
+                                    </li>
+                                    <li class="tags__item">
+                                        <svg class="tags__icon" aria-hidden="true"><use href="#icon-js" /></svg>
+                                        JavaScript
+                                    </li>
+                                    <li class="tags__item">
+                                        <svg class="tags__icon" aria-hidden="true"><use href="#icon-jquery" /></svg>
+                                        jQuery
+                                    </li>
+                                    <li class="tags__item">
+                                        <svg class="tags__icon" aria-hidden="true"><use href="#icon-typescript" /></svg>
+                                        TypeScript
+                                    </li>
+                                    <li class="tags__item">
+                                        <svg class="tags__icon" aria-hidden="true"><use href="#icon-react" /></svg>
+                                        React
+                                    </li>
+                                    <li class="tags__item">
+                                        <svg class="tags__icon" aria-hidden="true"><use href="#icon-pwa" /></svg>
+                                        PWA
+                                    </li>
                                 </ul>
                             </div>
 
                             <div class="skills__group reveal">
                                 <h3 class="skills__group-title">Back-end</h3>
                                 <ul class="tags" aria-label="Back-end skills">
-                                    <li class="tags__item">PHP</li>
-                                    <li class="tags__item">MySQL</li>
-                                    <li class="tags__item">Node.js</li>
-                                    <li class="tags__item">Python</li>
+                                    <li class="tags__item">
+                                        <svg class="tags__icon" aria-hidden="true"><use href="#icon-php" /></svg>
+                                        PHP
+                                    </li>
+                                    <li class="tags__item">
+                                        <svg class="tags__icon" aria-hidden="true"><use href="#icon-mysql" /></svg>
+                                        MySQL
+                                    </li>
+                                    <li class="tags__item">
+                                        <svg class="tags__icon" aria-hidden="true"><use href="#icon-node" /></svg>
+                                        Node.js
+                                    </li>
+                                    <li class="tags__item">
+                                        <svg class="tags__icon" aria-hidden="true"><use href="#icon-python" /></svg>
+                                        Python
+                                    </li>
                                 </ul>
                             </div>
 
                             <div class="skills__group reveal">
                                 <h3 class="skills__group-title">Cloud &amp; DevOps</h3>
                                 <ul class="tags" aria-label="Cloud and DevOps skills">
-                                    <li class="tags__item">Git</li>
-                                    <li class="tags__item">AWS</li>
+                                    <li class="tags__item">
+                                        <svg class="tags__icon" aria-hidden="true"><use href="#icon-git" /></svg>
+                                        Git
+                                    </li>
+                                    <li class="tags__item">
+                                        <svg class="tags__icon" aria-hidden="true"><use href="#icon-aws" /></svg>
+                                        AWS
+                                    </li>
                                 </ul>
                             </div>
 
                             <div class="skills__group reveal">
                                 <h3 class="skills__group-title">Design</h3>
                                 <ul class="tags" aria-label="Design skills">
-                                    <li class="tags__item">Figma</li>
-                                    <li class="tags__item">Photoshop</li>
+                                    <li class="tags__item">
+                                        <svg class="tags__icon" aria-hidden="true"><use href="#icon-figma" /></svg>
+                                        Figma
+                                    </li>
+                                    <li class="tags__item">
+                                        <svg class="tags__icon" aria-hidden="true"><use href="#icon-photoshop" /></svg>
+                                        Photoshop
+                                    </li>
                                 </ul>
                             </div>
 
                             <div class="skills__group reveal">
                                 <h3 class="skills__group-title">AI Tools</h3>
                                 <ul class="tags" aria-label="AI tools">
-                                    <li class="tags__item">ChatGPT</li>
-                                    <li class="tags__item">Claude.AI</li>
+                                    <li class="tags__item">
+                                        <svg class="tags__icon" aria-hidden="true"><use href="#icon-chatgpt" /></svg>
+                                        ChatGPT
+                                    </li>
+                                    <li class="tags__item">
+                                        <svg class="tags__icon" aria-hidden="true"><use href="#icon-claude" /></svg>
+                                        Claude.AI
+                                    </li>
                                 </ul>
                             </div>
                         </div>
