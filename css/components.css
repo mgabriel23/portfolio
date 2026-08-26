@@ -657,11 +657,16 @@
 .ruler__tick {
     display: block;
     background-color: currentcolor;
-    inline-size: 1.25rem;
-    block-size: 2px;
+    inline-size: 6px;
+    aspect-ratio: 1;
+    block-size: auto;
+    border-radius: 50%;
+    opacity: 0.4;
     transition:
         inline-size var(--dur-quick) var(--ease-out),
         block-size var(--dur-quick) var(--ease-out),
+        border-radius var(--dur-quick) var(--ease-out),
+        opacity var(--dur-quick) var(--ease-out),
         background-color var(--dur-quick) var(--ease-out);
 }
 
@@ -682,6 +687,10 @@
 
 .ruler__link[aria-current='true'] .ruler__tick {
     inline-size: 2rem;
+    aspect-ratio: auto;
+    block-size: 6px; /* same thickness as the resting dot — only length grows */
+    border-radius: 3px;
+    opacity: 1;
 }
 
 @media (min-width: 60em) {
@@ -703,13 +712,17 @@
 
     /* Tick becomes a vertical mark too, matching the rotated label. */
     .ruler__tick {
-        inline-size: 2px;
-        block-size: 1.25rem;
+        inline-size: 6px;
+        aspect-ratio: 1;
+        block-size: auto;
+        border-radius: 50%;
     }
 
     .ruler__link[aria-current='true'] .ruler__tick {
-        inline-size: 2px;
+        inline-size: 6px; /* same thickness as the resting dot — only length grows */
+        aspect-ratio: auto;
         block-size: 2.5rem;
+        border-radius: 3px;
     }
 }
 
