@@ -365,6 +365,8 @@
     flex-shrink: 0;
     border: 1px solid var(--color-line);
     border-radius: var(--radius-sm);
+    border-top-right-radius: 0; /* the caption below is visually part of the same frame */
+    border-bottom-right-radius: 0;
     overflow: hidden;
 }
 
@@ -508,7 +510,7 @@
         left: calc(var(--rail-width) + var(--ruler-width) + (100vw - var(--rail-width) - var(--ruler-width)) / 2);
         transform: translate(-50%, -50%);
         width: min(calc(100vw - var(--rail-width) - var(--ruler-width) - 2 * var(--gutter)), 64rem);
-        height: min(90vh, 46rem);
+        height: min(98vh, 50rem);
     }
 
     .image-lightbox:not(:modal) img {
